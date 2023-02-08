@@ -1,0 +1,127 @@
+input.btn-check:checked + label#Petrol {
+  color: white;
+  background-color: rgb(193, 28, 28);
+}
+
+input.btn-check:checked + label#Petrol:hover {
+  color: white;
+  background-color: rgb(193, 28, 28);
+  box-shadow: 0px 0px 2px 5px rgba(193, 28, 28, 0.4);
+}
+
+input.btn-check + label#Petrol {
+  color: rgb(193, 28, 28);
+  background-color: white;
+}
+
+input.btn-check + label#Petrol:hover {
+  color: rgb(193, 28, 28);
+  background-color: white;
+  box-shadow: 0px 0px 2px 5px rgba(193, 28, 28, 0.4);
+}
+
+input.btn-check:checked + label#Diesel {
+  color: white;
+  background-color: rgb(193, 28, 28);
+}
+
+input.btn-check:checked + label#Diesel:hover {
+  color: white;
+  background-color: rgb(193, 28, 28);
+  box-shadow: 0px 0px 2px 5px rgba(193, 28, 28, 0.4);
+}
+
+input.btn-check + label#Diesel {
+  color: rgb(193, 28, 28);
+  background-color: white;
+}
+
+input.btn-check + label#Diesel:hover {
+  color: rgb(193, 28, 28);
+  background-color: white;
+  box-shadow: 0px 0px 2px 5px rgba(193, 28, 28, 0.4);
+}
+
+input.btn-check:checked + label#Electric {
+  color: white;
+  background-color: rgb(31, 191, 63);
+}
+
+input.btn-check:checked + label#Electric:hover {
+  color: white;
+  background-color: rgb(31, 191, 63);
+  box-shadow: 0px 0px 2px 5px rgba(31, 191, 63, 0.4);
+}
+
+input.btn-check + label#Electric {
+  color: rgb(31, 191, 63);
+  background-color: white;
+}
+
+input.btn-check + label#Electric:hover {
+  color: rgb(31, 191, 63);
+  background-color: white;
+  box-shadow: 0px 0px 2px 5px rgba(31, 191, 63, 0.4);
+}
+
+input.btn-check:checked + label#Hydrogen {
+  color: white;
+  background-color: rgb(36, 63, 214);
+}
+
+input.btn-check:checked + label#Hydrogen:hover {
+  color: white;
+  background-color: rgb(36, 63, 214);
+  box-shadow: 0px 0px 2px 5px rgba(36, 63, 214, 0.4);
+}
+
+input.btn-check + label#Hydrogen {
+  color: rgb(36, 63, 214);
+  background-color: white;
+}
+
+input.btn-check + label#Hydrogen:hover {
+  color: rgb(36, 63, 214);
+  background-color: white;
+  box-shadow: 0px 0px 2px 5px rgba(36, 63, 214, 0.4);
+}
+
+@media (min-width: 0px) {
+  label[name=petrol] {
+    border-radius: 0rem 0.5rem 0rem 0rem;
+  }
+  label[name=diesel] {
+    border-radius: 0rem;
+  }
+  label#Hydrogen {
+    border-radius: 0rem;
+  }
+  label#Electric {
+    border-radius: 0rem;
+  }
+}
+@media (min-width: 625px) {
+  label#Petrol {
+    border-radius: 0.5rem 0rem 0rem 0rem;
+  }
+  label#Hydrogen {
+    border-radius: 0rem 0rem 0.5rem 0.5rem;
+  }
+  label#Electric {
+    border-radius: 0rem 0.5rem 0rem 0rem;
+  }
+}
+@media (min-width: 814.5px) {
+  label#Petrol {
+    border-radius: 0.5rem 0rem 0rem 0.5rem;
+  }
+  label#Diesel {
+    border-radius: 0rem 0rem 0rem 0rem;
+  }
+  label#Hydrogen {
+    border-radius: 0rem 0.5rem 0.5rem 0rem;
+  }
+  label#Electric {
+    border-radius: 0rem 0rem 0rem 0rem;
+  }
+}/*# sourceMappingURL=initial.component.css.map */

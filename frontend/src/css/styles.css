@@ -1,0 +1,284 @@
+.notifier__container * {
+  box-sizing: border-box;
+}
+.notifier__container-list {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+.notifier__notification {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  visibility: hidden;
+  z-index: 10000;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.notifier__notification--material {
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: default;
+  padding-top: 11px;
+  padding-right: 26px;
+  padding-bottom: 10px;
+  padding-left: 26px;
+}
+.notifier__notification--material .notifier__notification-message {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: top;
+  line-height: 32px;
+  font-size: 15px;
+}
+.notifier__notification--material .notifier__notification-button {
+  display: inline-block;
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+  margin-right: -10px;
+  margin-left: 10px;
+  outline: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+  vertical-align: top;
+}
+.notifier__notification--material .notifier__notification-button:hover, .notifier__notification--material .notifier__notification-button:focus {
+  opacity: 1;
+}
+.notifier__notification--material .notifier__notification-button:active {
+  transform: scale(0.82);
+  opacity: 1;
+}
+
+.notifier__notification--default {
+  background-color: #444;
+  color: #fff;
+}
+.notifier__notification--default .notifier__notification-button-icon {
+  fill: #fff;
+}
+
+.notifier__notification--error {
+  background-color: #d9534f;
+  color: #fff;
+}
+.notifier__notification--error .notifier__notification-button-icon {
+  fill: #fff;
+}
+
+.notifier__notification--info {
+  background-color: #5bc0de;
+  color: #fff;
+}
+.notifier__notification--info .notifier__notification-button-icon {
+  fill: #fff;
+}
+
+.notifier__notification--success {
+  background-color: #5cb85c;
+  color: #fff;
+}
+.notifier__notification--success .notifier__notification-button-icon {
+  fill: #fff;
+}
+
+.notifier__notification--warning {
+  background-color: #f0ad4e;
+  color: #fff;
+}
+.notifier__notification--warning .notifier__notification-button-icon {
+  fill: #fff;
+}
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Gibson, Tahoma, Arial, sans-serif, sans-serif !important;
+  /* Add !important to overwrite all elements */
+}
+
+.text {
+  font-size: 14px;
+}
+
+.text-lighter {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.text-medium {
+  font-size: 14px;
+}
+
+.text-bolder {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.text-bold {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.small-text {
+  font-size: 13px;
+  color: #5A5E66;
+}
+
+.text-danger {
+  color: red;
+}
+
+.form-select, .form-control {
+  font-size: 14px;
+  color: #5A5E66;
+  padding: 9px;
+}
+
+.custom-shadow {
+  box-shadow: 0 1px 2px 0 black;
+}
+
+.with-placeholder {
+  padding-right: 30px;
+}
+
+.placeholder {
+  position: relative;
+  display: inline-block;
+  opacity: 1;
+  background-color: white;
+}
+
+.placeholder::after {
+  position: absolute;
+  right: 9px;
+  top: 12px;
+  font-size: 14px;
+  content: attr(data-placeholder);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.background {
+  background-color: #edeef0;
+  width: 100%;
+  height: 100%;
+}
+
+.main-container-small {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.checkbox-container {
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  padding: 18px;
+  transition: all 50ms ease-out;
+}
+
+.radio-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+input[type=radio], input[type=checkbox] {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  height: 20px;
+  width: 20px;
+  color: #4c4c4c;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-text {
+  color: #4c4c4c;
+  font-weight: 400;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+input[type=radio]::after, input[type=checkbox]::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 1000;
+  font-size: 15px;
+  content: "\f00c";
+  display: none;
+}
+
+input[type=radio]:checked:after, input[type=checkbox]:checked::after {
+  display: block;
+}
+
+@media (min-width: 576px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+}
+@media (max-width: 575px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+}
+.navigationPath {
+  color: #5a5e66;
+  font-size: 14.4px;
+  line-height: 1.25;
+  padding-bottom: 9px;
+}
+
+.pageTitle {
+  margin: 0 0 36px;
+  padding: 0;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.sectionTitle {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-bottom: 9px;
+  line-height: 20px;
+}
+
+.inputLabel {
+  color: #4c4c4c;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 3px;
+  padding-bottom: 0px;
+  line-height: 20px;
+}/*# sourceMappingURL=styles.css.map */

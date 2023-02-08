@@ -1,0 +1,132 @@
+<div class="bg-image">
+
+  <div class="main-container">
+    <div class="board p-4">
+      <form #formName="ngForm" (ngSubmit)="formSubmission()">
+
+        <div class="layout-grid">
+
+          <!-- brand -->
+          <div>
+            <label class="inputLabel" for="brand">Brand</label>
+            <select class="form-select" [(ngModel)]="searchQuery.brand" (ngModelChange)="searchQuery.model = null"
+              name="brand">
+              <option [ngValue]="null">Any</option>
+              <option *ngFor="let brand of brands" value={{brand}}>{{brand}}</option>
+            </select>
+          </div>
+
+          <!-- model -->
+          <div>
+            <label class="inputLabel" for="model">Model</label>
+            <select class="form-select" [(ngModel)]="searchQuery.model" name="model"
+              [disabled]="searchQuery.brand==null">
+              <option [ngValue]="null">Any</option>
+              <option *ngFor="let madel of models" value={{madel}}>{{madel}}</option>
+            </select>
+          </div>
+
+          <!-- fuel -->
+          <div>
+            <label class="inputLabel">Fuel</label>
+            <select class="form-select" [(ngModel)]="searchQuery.fuel" name="fuel">
+              <option [ngValue]="null">Any</option>
+              <option *ngFor="let fuel of fuels" value={{fuel}}>
+                {{fuel}}
+              </option>
+            </select>
+
+          </div>
+
+          <!-- location -->
+          <div style="font-size: 10px;">
+            <label class="inputLabel">Your Location</label>
+
+            <!-- <app-google-address-search [styles]="{'font-size': '12px', 'padding': '7px'}"
+              [selectedCountry]="searchQuery.country" [searchType]="'all'" [currentInput]="searchQuery.location"
+              [lastInput]="searchQuery.location" (locationDetected)="setLocation($event)">
+            </app-google-address-search>
+
+
+              [selectedCountry]="searchQuery.country"
+              [searchType]="'all'"
+              [currentInput]="searchQuery.location"
+              [lastInput]="searchQuery.location"
+              (locationDetected)="setLocation($event)"
+              [styles]="{'font-size': '12px', 'padding': '7px'}"
+              (foundLocationOutput)="setLocation($event)"
+             -->
+            <app-google-address-search
+              [styles]="{'font-size': '12px', 'padding': '7px'}"
+              [selectedCountry]="'DE'"
+              [searchType]="'(regions)'"
+              [latitude]="searchQuery.latitude"
+              [longitude]="searchQuery.longitude"
+              [locality]="searchQuery.locality"
+              [postal_code]="searchQuery.postal_code"
+              (foundLocationOutput)="setLocation($event)"
+            ></app-google-address-search>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <!-- year -->
+          <div>
+            <label class="inputLabel" for="yearFrom">Years from</label>
+            <select class="form-select" [(ngModel)]="searchQuery.yearFrom" name="yearFrom">
+              <option [ngValue]="null" selected>Any</option>
+              <option *ngFor="let year of years" value={{year}}>{{year}}</option>
+            </select>
+          </div>
+
+
+          <!-- mileage -->
+          <div>
+            <label class="inputLabel" for="mileage">Mileage up to</label>
+            <select class="form-select" [(ngModel)]="searchQuery.mileageTill" name="mileage">
+              <option [ngValue]="null" selected>Any</option>
+              <option *ngFor="let mileage of mileages" value={{mileage}}>{{mileage | number:'1.0'}} km
+              </option>
+            </select>
+          </div>
+
+          <!-- price -->
+          <div>
+            <label class="inputLabel" for="priceTill">Price up to</label>
+            <select class="form-select" [(ngModel)]="searchQuery.priceTill" name="priceTill">
+              <option [ngValue]="null" selected>Any</option>
+              <option *ngFor="let price of prices" value={{price}}>{{price | currency:'EUR':'symbol':'1.0'}}</option>
+            </select>
+          </div>
+
+          <!-- Submit button -->
+          <div>
+
+            <br>
+            <button type="submit" class="btn btn-primary btn-block " style="width: 100%;">Search</button>
+
+          </div>
+
+        </div>
+
+
+
+
+
+      </form>
+
+    </div>
+  </div>
+
+</div>
+
+

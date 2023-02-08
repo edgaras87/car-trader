@@ -1,0 +1,161 @@
+
+
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+
+
+    <div class="navigationPath">1. Vehicle data</div>
+    <h1 class="pageTitle">Condition & Inspection</h1>
+
+
+
+
+    <form *ngIf="condition" [formGroup]="condition">
+
+
+        <label class="sectionTitle">Vehicle history</label>
+        <hr class="my-0 pb-4">
+
+        <!-- mileage -->
+        <div class="row pb-2">
+          <div class="col">
+
+            <label class="inputLabel"><span style="color: red;">*</span> Mileage</label>
+            <div class="placeholder" style="width: 100%;" data-placeholder="km">
+              <input
+                class="form-control with-placeholder"
+                type="text"
+                formControlName="mileage"
+                [value]="condition.value.mileage | commaNumber"
+                maxlength="9"
+
+                commaNumberDirective
+                >
+                <ng-container  *ngIf="condition?.get('mileage')?.invalid && (condition?.get('mileage')?.touched || condition?.get('mileage')?.dirty)">
+                  <small *ngIf="condition?.get('mileage')?.hasError('required')" class="text-danger">Can't be empty!</small>
+                </ng-container>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <!-- owners -->
+        <div class="row pb-2">
+          <div class="col">
+            <label class="inputLabel">Number of Vehicle Owners</label>
+            <select class="form-select" formControlName="owners">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let owner of owners" [ngValue]="owner">
+                {{owner}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- damaged -->
+        <div class="row pb-2">
+          <div class="col">
+            <label class="inputLabel">Accidents-free</label>
+            <select class="form-select" formControlName="accidentFree">
+              <option [ngValue]="null">Please select</option>
+              <option [ngValue]="true">Yes</option>
+              <option [ngValue]="false">No</option>
+
+            </select>
+          </div>
+        </div>
+
+        <!-- roadworthy -->
+        <div class="row pb-2">
+          <div class="col">
+            <label class="inputLabel"><span style="color: red;">*</span>Roadworthy</label>
+            <select class="form-select" formControlName="roadworthy">
+              <option [ngValue]="null">Please select</option>
+              <option [ngValue]='true'>Yes</option>
+              <option [ngValue]='false'>No</option>
+            </select>
+            <ng-container  *ngIf="condition?.get('roadworthy')?.invalid && (condition?.get('roadworthy')?.touched || condition?.get('roadworthy')?.dirty)">
+              <small *ngIf="condition?.get('roadworthy')?.hasError('required')" class="text-danger">Can't be empty!</small>
+            </ng-container>
+          </div>
+        </div>
+
+        <!-- smoking -->
+        <div class="row pb-2">
+          <div class="col">
+
+            <!-- <label class="checkbox-container"><input type="checkbox" formControlName="smoking">Non-smoking vechicle</label> -->
+            <label class="checkbox-container">
+              <input type="checkbox" id="smoking" formControlName="nonSmoking">
+              <label class="checkbox-text small-text" for="smoking">{{checkboxText('nonSmoking')}}</label>
+            </label>
+          </div>
+        </div>
+
+
+        <label class="sectionTitle pt-5">Service and maintenance</label>
+        <hr class="my-0 pb-4">
+
+        <!-- inspection -->
+        <label class="inputLabel">General inspection valid until</label>
+        <div class="grid-container pb-2">
+
+          <select class="form-select" formControlName="inspectionYearUntil" (change)="setInspectionTimestamp()">
+            <option [ngValue]="null">Year</option>
+            <option *ngFor="let year of years" [ngValue]="year">
+              {{year}}
+            </option>
+          </select>
+
+          <select class="form-select" formControlName="inspectionMonthUntil" (change)="setInspectionTimestamp()">
+            <option [ngValue]="null">Month</option>
+            <option *ngFor="let month of months, let i = index" [ngValue]="i">
+              {{month}}
+            </option>
+          </select>
+
+        </div>
+
+        <!-- service history -->
+        <div class="row pb-2 ">
+          <div class="col">
+            <label class="checkbox-container">
+              <input type="checkbox" id="serviceHistory" formControlName="serviceHistory">
+              <label class="checkbox-text small-text" for="serviceHistory">{{checkboxText('serviceHistory')}}</label>
+            </label>
+          </div>
+        </div>
+        <!-- warranty -->
+        <div class="row pb-2">
+          <div class="col">
+            <!-- <label class="checkbox-container"><input type="checkbox" formControlName="warranty"> Warranty/Factory Warranty</label> -->
+            <label class="checkbox-container">
+              <input type="checkbox" id="warranty" formControlName="warranty">
+              <label class="checkbox-text small-text" for="warranty">{{checkboxText('warranty')}}</label>
+            </label>
+          </div>
+        </div>
+
+
+      <!-- </div> -->
+
+
+    </form>
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+

@@ -1,0 +1,414 @@
+<!-- <pre>{{searchQuery|json}}</pre> -->
+<!-- backgraund -->
+<div class="background">
+  <div class="main-container">
+
+    <!-- layout -->
+    <div class="layout-grid">
+
+
+      <!-- ============== search-form ======================= -->
+      <div class="layout-cell">
+
+        <div class="content p-3">
+          <form #formName="ngForm" (change)="handlePageChange(1)">
+
+            <h3 class="border-bottom p-3">
+              Detailed Search
+            </h3>
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+
+              <div class="accordion-item">
+
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne">Location</button>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample">
+
+
+
+                  <div class="border-bottom py-3 px-2">
+
+                    <div class="pb-2">
+                      <label class="inputLabel">Country</label>
+                      <select class="form-select" [(ngModel)]="searchQuery.country" name="country"
+                        (ngModelChange)="onCountrySelect()">
+                        <option [ngValue]="null">Please select</option>
+                        <option *ngFor="let countryKey of countryKeys" [value]='countryKey'>
+                          {{countryValue(countryKey)}}
+                        </option>
+                      </select>
+                    </div>
+
+
+                    <!-- location -->
+                    <div class="pb-2">
+                      <label class="inputLabel" for="location">Location</label>
+                      <app-google-address-search [selectedCountry]="searchQuery.country" [searchType]="'(regions)'"
+                        [latitude]="searchQuery.latitude" [longitude]="searchQuery.longitude"
+                        [locality]="searchQuery.locality" [postal_code]="searchQuery.postal_code"
+                        (foundLocationOutput)="setLocation($event)"></app-google-address-search>
+                    </div>
+
+                    <!-- distance -->
+                    <label class="inputLabel" for="location">Distance</label>
+                    <select class="form-select pb-2" [(ngModel)]="searchQuery.distance" name="distance"
+                      [disabled]="!searchQuery.locality">
+                      <option [ngValue]="null">Any</option>
+                      <option *ngFor="let distance of distances" [ngValue]="distance">{{distance | number:'1.0'}} km
+                      </option>
+                    </select>
+
+                  </div>
+
+
+
+
+
+                </div>
+
+              </div>
+
+
+              <div class="accordion-item">
+
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo" >Main</button>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample">
+
+
+                  <div class="py-3 px-2">
+
+                    <div class="pb-2">
+                      <label class="inputLabel" for="brand">Make</label>
+                      <select class="form-select" [(ngModel)]="searchQuery['brand']" name="brand"
+                        (ngModelChange)="searchQuery['model'] = null">
+                        <option [ngValue]="null">Make</option>
+                        <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
+                      </select>
+                    </div>
+
+                    <div class="pb-2">
+                      <label class="inputLabel" for="model">Model</label>
+                      <select class="form-select" [(ngModel)]="searchQuery['model']" name="model"
+                        [disabled]="searchQuery['brand'] == null">
+                        <option [ngValue]="null">Model</option>
+                        <option *ngFor="let model of models" [ngValue]="model">{{model}}</option>
+                      </select>
+                    </div>
+
+                    <!-- fuel -->
+                    <div>
+                      <label class="inputLabel">Fuel</label>
+                      <select class="form-select" [(ngModel)]="searchQuery.fuel" name="fuel">
+                        <option [ngValue]="null">Any</option>
+                        <option *ngFor="let fuel of fuels" value={{fuel}}>
+                          {{fuel}}
+                        </option>
+                      </select>
+                    </div>
+
+
+                  </div>
+
+
+
+                </div>
+
+
+
+              </div>
+
+
+              <div class="accordion-item">
+
+                <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree">Additional</button>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample">
+
+                  <div class="py-3 px-2">
+                    <label class="inputLabel">Year</label>
+                    <div class="grid-container pb-2">
+
+                      <select class="form-select" [(ngModel)]="searchQuery['yearFrom']" name="yearFrom">
+                        <option [ngValue]="null" selected>Year From:</option>
+                        <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+                      </select>
+
+
+                      <select class="form-select" [(ngModel)]="searchQuery['yearTill']" name="yearTill">
+                        <option [ngValue]="null" selected>Year Till:</option>
+                        <option *ngFor="let year of years" [ngValue]="year">{{year}}</option>
+                      </select>
+
+                    </div>
+
+                    <label class="inputLabel">Price</label>
+                    <div class="grid-container pb-2">
+                      <select class="form-select" [(ngModel)]="searchQuery['priceFrom']" name="priceFrom">
+                        <option [ngValue]="null" selected>Price from:</option>
+                        <option *ngFor="let price of prices" [ngValue]="price">{{price | currency:'EUR':'symbol' :'1.0'}}
+                        </option>
+                      </select>
+
+                      <select class="form-select" [(ngModel)]="searchQuery['priceTill']" name="priceTill">
+                        <option [ngValue]="null" selected>Price till:</option>
+                        <option *ngFor="let price of prices" [ngValue]="price">{{price | currency:'EUR':'symbol' :'1.0'}}
+                        </option>
+                      </select>
+                    </div>
+
+                    <label class="inputLabel">Mileage</label>
+                    <div class="grid-container pb-2">
+                      <select class="form-select" [(ngModel)]="searchQuery['mileageFrom']" name="mileageFrom">
+                        <option [ngValue]="null" selected>Mileage from:</option>
+                        <option *ngFor="let mileage of mileages" [ngValue]="mileage">{{mileage | number:'1.0'}} km</option>
+                      </select>
+
+                      <select class="form-select" [(ngModel)]="searchQuery['mileageTill']" name="mileageTill">
+                        <option [ngValue]="null" selected>Mileage till:</option>
+                        <option *ngFor="let mileage of mileages" [ngValue]="mileage">{{mileage | number:'1.0'}} km</option>
+                      </select>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+          </form>
+        </div>
+
+
+
+      </div>
+
+
+      <!-- ============== ads ======================= -->
+      <div class="layout-cell">
+
+        <!-- search info -->
+        <div class="info-board pb-3">
+
+          <!-- 1,244,478 -->
+          <!-- <h5 class="mb-3"><b>{{1234567 | number:'1.0':'en-US'}} Ads matching your search criteria</b></h5> -->
+          <h5 class="mb-3"><b>{{config?.totalItems| number:'1.0':'en-US'}} Ads matching your search criteria</b></h5>
+
+
+          <div class="grid-container">
+
+
+
+
+            <!-- sort -->
+
+            <div class="d-flex justify-content-start">
+              <div class="flex-info-board-item">
+
+                <label class="inputLabel m-0">Sort by</label>
+                <select #sortSelect (change)="onSortingChange(sortSelect.value)" class="pl-5">
+                  <option *ngFor="let option of sortOptions" [ngValue]="option" [selected]="selectedSortOption(option)">
+                    {{option}}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+
+
+            <!-- items per page -->
+            <div class="d-flex justify-content-end">
+              <div class="flex-info-board-item">
+
+                <label class="inputLabel m-0">Items per Page</label>
+                <select (change)="handlePageSizeChange($event)">
+                  <option *ngFor="let size of pageSizes" [ngValue]="size" [selected]="size === searchQuery.size">
+                    {{ size }}
+                  </option>
+                </select>
+
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+        </div>
+
+        <!-- <div *ngFor="let ad of ads | paginate: {
+          itemsPerPage: pageSize,
+          currentPage: page,
+          totalItems: count
+        }"> -->
+
+
+
+        <div *ngIf="config">
+
+
+
+          <div *ngFor="let ad of ads | paginate: config">
+
+            <div class="pb-3">
+              <div class="content p-2" [routerLink]="['/',displayAdRoute,ad.id]" style="cursor: pointer;" [id]="ad.id">
+                <!-- <div class="content p-2" (click)="seeAd(ad._id)"  style="cursor: pointer;" [id]="ad._id"> -->
+                <div class="ads-layout-grid">
+                  <div class="images-container">
+
+                    <div *ngIf="ad?.detailsInfo?.images?.length" class="main-image-card ">
+
+
+                      <ik-image [src]="ad.detailsInfo.images[0].url +'&tr=w-350,h-250,c-maintain_ratio'"></ik-image>
+                    </div>
+
+                    <div class="extra-image-card" *ngFor="let img of additionalImages(ad.detailsInfo.images)">
+                      <ik-image [src]="img?.url+'&tr=w-100,h-80,c-maintain_ratio'"></ik-image>
+                    </div>
+
+
+                  </div>
+
+                  <div class="ad-container">
+                    <div class="ad-details">
+
+
+
+                      <div class="ads-description-row-flex ms-2">
+                        <div class="title a border-bottom">
+                          {{ad?.generalInfo?.general?.brand}} {{ad?.generalInfo?.general?.model}}
+                        </div>
+
+                        <div class="price a border-bottom">
+                          {{ad?.detailsInfo?.price | currency:'EUR':'symbol':'1.0'}}
+                        </div>
+                      </div>
+
+                      <div class="modification ms-2">
+                        {{ad?.generalInfo?.general?.modification}}
+                      </div>
+
+                      <div class="primary-text-size blur-text ms-2">
+                        {{ad?.detailsInfo?.subtitle}}
+                      </div>
+
+
+
+
+                      <div class="ads-description-row-flex ms-2 pt-3">
+
+                        <ul class="d-flex flex-wrap p-0 m-0 rounded"
+                          style="font-size: 3vh; list-style: none;background-color: bisque;">
+
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.general?.produced">FR
+                            {{ad.generalInfo.general.produced|date:'MM/yyyy'}}</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.condition?.mileage">
+                            {{ad.generalInfo.condition.mileage |number:'':'eu'}} km</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.engine?.power">
+                            {{ad.generalInfo.engine.power |showEnginePower}}</li>
+
+
+                        </ul>
+                      </div>
+
+
+
+                      <div class="ads-description-row-flex ms-2 pt-1">
+
+                        <ul class="d-flex flex-wrap p-0 m-0 rounded"
+                          style="font-size: 3vh; list-style: none;background-color: bisque;">
+
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.general?.body">
+                            {{ad.generalInfo.general.body}}</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.condition?.accidentFree">
+                            <b>Accident-free</b>
+                          </li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.performance?.fuel">
+                            {{ad.generalInfo.performance.fuel}}</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.chassis?.transmission">
+                            {{capitalizeFirstLetter(ad.generalInfo.chassis.transmission!)}} gearbox</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.condition?.inspectionUntil">HU
+                            {{ad.generalInfo.condition.inspectionUntil|date:'MM/yyyy'}}</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad?.generalInfo?.general?.doors">
+                            {{capitalizeFirstLetter(ad.generalInfo.general.doors!)}} Doors</li>
+
+                        </ul>
+                      </div>
+
+                      <!-- padaryk kad textas <360px palistu po apacia -->
+                      <div class="ads-description-row-flex ms-2 pt-1">
+
+                        <ul class="d-flex flex-wrap p-0 m-0 rounded"
+                          style="font-size: 3vh; list-style: none;background-color: bisque;">
+
+                          <li class="tech_subtitle small-text" *ngIf="ad.generalInfo.performance.consumption_combined">
+                            ca.
+                            {{ad.generalInfo.performance.consumption_combined}} l/100km (comb.)</li>
+                          <li class="tech_subtitle small-text" *ngIf="ad.generalInfo.performance.co2_emissions">ca.
+                            {{ad.generalInfo.performance.co2_emissions}}g CO₂(comb.)</li>
+
+
+                        </ul>
+                      </div>
+                    </div>
+
+                    <div class="ad-contacts">
+                      <hr style="margin: .5rem 0;">
+
+                      <div class="contacts pb-1">
+
+
+
+                        <b class="primary-text-size ms-2">
+                          {{sellerName(ad)}}
+                        </b>
+
+
+                        <div class="primary-text-size ms-2">
+                          {{location(ad)}}
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="d-flex justify-content-center">
+          <pagination-controls class="pagination" (pageChange)="handlePageChange($event)"></pagination-controls>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+

@@ -1,0 +1,275 @@
+
+
+.nav-link:hover {
+  background-color: #bdc5d5;
+  border-radius: 5px;
+}
+
+
+// .navbar {
+//   box-shadow: 0 1px 2px 0 rgba(black,1);
+// }
+
+
+
+/*
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+
+:root {
+  --bg-color: #ffffff;
+  --text-color: rgb(0, 0, 0);
+  --main-color: #29fd53
+}
+
+// body {
+//   min-height: 100vh;
+//   background-color: var(--bg-color);
+// }
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  background-color: var(--bg-color);
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  padding: 28px 12%;
+}
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// https://developer.chrome.com/blog/performant-expand-and-collapse/
+// https://stackoverflow.com/questions/37324525/how-to-position-the-collapse-menu-in-bootstrap-3
+/*
+@media screen and (max-width:1000px){
+    #parent{
+      display:flex;
+      flex-flow: column;
+
+    }
+    #a{order:2; top: 0px;}
+    #b{order:1;}
+    #c{order:3;}
+
+  }
+  */
+/*
+div.foo {
+
+  border-width: 1px 1px 0 0;
+  border-color: #000;
+  border-style: solid;
+}
+
+div.foo:last-child { border-width: 1px 0 0 0; }
+
+li.tech_subtitle:not(:last-child)::after {
+
+  content: '|';
+  padding-right: 1vh;
+  padding-right: 1vh;
+}
+
+
+.navbar {
+  height: 50px;
+
+  // border-bottom: 1px solid #494949;
+}
+*/
+
+
+// @media screen and (max-width:768px){
+//   .navbar {
+//     position: relative;
+
+
+//   }
+//   .navbar-collapse {
+//     position: absolute;
+//     top: 10vh;
+//     right: 0px;
+//     left: 0px;
+//     background-color: silver;
+//     text-align: center;
+//     z-index: 1;
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+.Navbar {
+  background-color: #46ACC2;
+  display: flex;
+  padding: 16px;
+  font-family: sans-serif;
+  color: white;
+}
+
+.Navbar__Link {
+  padding-right: 8px;
+}
+
+.Navbar__Items {
+  display: flex;
+}
+
+.Navbar__Items--right {
+  margin-left:auto;
+}
+
+.Navbar__Link-toggle {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .Navbar__Items,
+  .Navbar {
+    flex-direction: column;
+  }
+
+.Navbar__Items {
+    display:none;
+  }
+
+.Navbar__Items--right {
+    margin-left:0;
+  }
+
+.Navbar__ToggleShow {
+    display: flex;
+  }
+
+.Navbar__Link-toggle {
+    align-self: flex-end;
+    display: initial;
+    position: absolute;
+    cursor: pointer;
+   }
+}
+*/

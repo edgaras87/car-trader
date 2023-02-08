@@ -1,0 +1,43 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.content-cell {
+  order: 1;
+}
+
+.content-cell:nth-last-child(2) {
+  order: 2;
+}
+
+.content-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.content-cell-2 {
+  order: 2;
+}
+
+.content-cell-2:nth-child(2) {
+  order: 1;
+}
+.content-cell-2:nth-child(3) {
+  order: 1;
+}
+.content-cell-2:nth-child(4) {
+  order: 1;
+}
+.content-cell-2:nth-child(5) {
+  order: 1;
+}
+.content-cell-2:nth-child(6) {
+  order: 1;
+}/*# sourceMappingURL=equipment-info-form-page-v.component.css.map */

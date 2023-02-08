@@ -1,0 +1,27 @@
+.col {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+@media (min-width: 576px) {
+  .grid-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+}
+
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+
+
+}
+

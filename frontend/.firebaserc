@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "car-trader-ce2df": {
+      "hosting": {
+        "car-trader-frontend": [
+          "car-trader-ce2df"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "car-trader-ce2df"
+  }
+}

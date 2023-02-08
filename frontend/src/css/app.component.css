@@ -1,0 +1,9 @@
+.background {
+  min-height: 100vh;
+  background-color: #edeef0;
+}
+
+router-outlet {
+  height: 100%;
+  background-color: red;
+}/*# sourceMappingURL=app.component.css.map */

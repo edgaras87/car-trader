@@ -1,0 +1,127 @@
+<!-- <div class="container-fluid pt-4" style="background-color: #edeef0;"> -->
+
+<div class="py-5">
+
+  <!-- <div class="container rounded-top shadow border-bottom p-4" style="background-color: white"> -->
+  <div class="main-container-small rounded-top  p-5" >
+    <h1 class="mb-2"><b>Incompleted ads</b></h1>
+    <hr class="my-0 pb-4">
+    <div class="border rounded p-2 mb-3" *ngFor="let ad of incompletedAds">
+      <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns -->
+      <div class="d-flex align-items-center">
+
+        <div style="width: 20vh; height: 15vh;" >
+
+          <div *ngIf="!!ad.detailsInfo?.images && !!ad.detailsInfo?.images?.length">
+
+            <ik-image [src]="ad.detailsInfo.images[0].url+'&tr=w-200,h-150,c-maintain_ratio'"></ik-image>
+          </div>
+
+
+
+
+        </div>
+
+        <div class="flex-grow-1  ps-3">
+          <div style="font-size: 14px; color: rgb(140, 140, 140);" *ngIf="ad.createdAt">
+            created: {{ad.createdAt|date:'dd.MM.yyyy'}}
+          </div>
+
+          <!-- <div style="font-size: 14px; color: rgb(140, 140, 140);">
+            created: 11.02.2022 (8 days ago)
+          </div> -->
+
+          <div style="font-size: 16px;"><b>{{ad.generalInfo.general.brand}} {{ad.generalInfo.general.model}}</b></div>
+          <ul class="d-flex flex-wrap p-0 m-0 rounded" style="list-style: none;font-size: 14px;">
+            <!-- <li class="tech_subtitle" *ngFor="let tech_data_value of getTechDataSubtitle(ad)">
+              {{tech_data_value}}
+            </li> -->
+
+
+            <li class="tech_subtitle" *ngIf="ad?.generalInfo?.general?.produced">FR
+              {{ad.generalInfo.general.produced|date:'MM/yyyy'}} </li>
+            <li class="tech_subtitle" *ngIf="ad?.generalInfo?.condition?.mileage">
+              {{ad.generalInfo.condition.mileage |number:'':'eu'}} km </li>
+            <li class="tech_subtitle" *ngIf="ad?.generalInfo?.engine?.power">
+              {{ad.generalInfo.engine.power |showEnginePower}} </li>
+          </ul>
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="gap: 2vh;">
+          <div class="grid-container-col-3" *ngIf="isCompleted(ad)">
+            <button type="button" (click)="deleteAd(ad)" class="btn btn-danger smaller"  >Delete</button>
+            <button type="button" [routerLink]="['/',editAdRoute,ad.id]" class="btn btn-warning smaller" >Edit</button>
+            <button type="button" class="btn btn-success smaller" (click)="publish(ad)" >Publish</button>
+          </div>
+          <div class="grid-container-col-3" *ngIf="!isCompleted(ad)" style="gap: 5px;">
+            <button type="button" (click)="deleteAd(ad)" class="btn btn-danger smaller"  >Delete</button>
+            <button type="button" [routerLink]="['/',editAdRoute,ad.id]" class="btn btn-warning smaller" >Complete</button>
+            <!-- <button type="button" class="btn btn-primary smaller">Publish</button> -->
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- border-right:  2px dashed #f0F;
+  border-bottom: 3px dotted #f00;
+  border-left:   5px solid  #09f; -->
+  <!-- <div class="container shadow border-bottom p-4" style="background-color: white"> -->
+  <div class="main-container-small p-5" >
+    <h1 class="mb-2"><b>My vehicles</b></h1>
+    <hr class="my-0 pb-4">
+    <div class="border rounded p-2 mb-3" *ngFor="let ad of completedAds">
+      <div class="d-flex align-items-center">
+        <div style="width: 20vh; height: 15vh;" *ngIf="!!ad.detailsInfo?.images?.length">
+          <ik-image [src]="ad.detailsInfo.images[0].url+'&tr=w-200,h-150,c-maintain_ratio'"></ik-image>
+        </div>
+        <div class="flex-grow-1  ps-3">
+          <!-- 11.02.2022  -->
+          <div style="font-size: 14px; color: rgb(140, 140, 140);" *ngIf="ad.createdAt">
+            created: {{ad.createdAt|date:'dd.MM.yyyy'}} {{createdBefore(ad.createdAt)}}
+          </div>
+
+          <div style="font-size: 16px;"><b>{{ad.generalInfo.general.brand}} {{ad.generalInfo.general.model}}</b></div>
+
+          <ul class="d-flex flex-wrap p-0 m-0 rounded" style="list-style: none;font-size: 14px;">
+            <!-- <li class="tech_subtitle" *ngFor="let tech_data_value of getTechDataSubtitle(ad)">
+              {{tech_data_value}}
+            </li> -->
+
+
+            <li class="tech_subtitle" *ngIf="ad?.generalInfo?.general?.produced">FR
+              {{ad.generalInfo.general.produced|date:'MM/yyyy'}} </li>
+            <li class="tech_subtitle" *ngIf="ad?.generalInfo?.condition?.mileage">
+              {{ad.generalInfo.condition.mileage |number:'':'eu'}} km </li>
+            <li class="tech_subtitle" *ngIf="ad?.generalInfo?.engine?.power">
+              {{ad.generalInfo.engine.power |showEnginePower}} </li>
+
+
+          </ul>
+
+        </div>
+        <div class="d-flex justify-content-center align-items-center" style="gap: 2vh;">
+
+            <button type="button" class="btn btn-success smaller" (click)="unpublish(ad)" >Unpublish</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="main-container-small rounded-bottom p-5">
+
+    <div class="grid-container big-gap">
+      <button type="button" class="btn btn-danger" style="width: 100%;" [routerLink]="homeRoute" >back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" [routerLink]="createNewAdRoute" >create new</button>
+    </div>
+  </div>
+
+</div>
+
+
+

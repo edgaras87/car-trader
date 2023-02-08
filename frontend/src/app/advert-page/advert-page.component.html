@@ -1,0 +1,302 @@
+
+
+<div class="main-container">
+
+
+  <!-- <div class="py-3  goback" routerLink=".."> -->
+  <div class="py-3  goback neonText" (click)="backToSearchResults()">
+  <!-- <div class="py-3  goback" backButton> -->
+    back to search results
+  </div>
+
+  <div class="layout-grid" *ngIf="ad">
+    <div class="layout-cell" >
+
+      <div class="info-grid">
+
+      <!-- photos -->
+      <div id="carouselExampleControls" class="content carousel slide" data-bs-ride="carousel" *ngIf="ad?.detailsInfo?.images && ad.detailsInfo.images.length > 0">
+        <div class="carousel-inner rounded shadow">
+          <div class="carousel-item" *ngFor="let img of ad?.detailsInfo?.images;let i=index;" [ngClass]="{'active' : i==0}" >
+            <img [src]="img.url">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+
+      <!-- key-features -->
+      <div class="content">
+        <div class=" p-3">
+          <div class="key-feature-grid">
+            <div class="key-feature" *ngFor="let feature of keyFeatures">
+              <div class="d-flex">
+                <img [src]="feature.svg" style="width: 48px; height: 48px;">
+                <div class="d-flex flex-column ps-2">
+                  <div class="small-text">{{feature.name}}</div>
+                  <div class="text-small-stroger">{{feature.value}}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- tech data -->
+      <div class="content">
+        <div class="alternating  px-4 py-3">
+          <div class="subtitle-bold border-bottom">Technical data</div>
+          <div class="pt-4"></div>
+
+          <div class="row m-0  py-2 " *ngIf="vehicleCondition">
+            <div class="col-6 text-small-stroger ">Vehicle condition</div>
+            <div class="col-6 text-lighter ">{{vehicleCondition}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="general?.body" >
+            <div class="col-6 text-small-stroger ">Category</div>
+            <div class="col-6 text-lighter ">{{general?.body}}</div>
+          </div>
+
+
+
+          <div class="row m-0  py-2" *ngIf="condition?.mileage">
+            <div class="col-6 text-small-stroger">Mileage</div>
+            <div class="col-6 text-lighter">{{condition?.mileage|commaNumber}} km</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="engine?.cubicCapacity" >
+            <div class="col-6 text-small-stroger">Cubic Capacity</div>
+            <div class="col-6 text-lighter">{{engine?.cubicCapacity|commaNumber}}  cm³</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="engine?.power">
+            <div class="col-6 text-small-stroger">Power</div>
+            <div class="col-6 text-lighter">{{power}}</div>
+          </div>
+
+
+
+          <div class="row m-0  py-2" *ngIf="performance?.fuel" >
+            <div class="col-6 text-small-stroger">Fuel</div>
+            <div class="col-6 text-lighter">{{performance?.fuel}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="consumptions.length>0">
+            <div class="col-6 text-small-stroger">Fuel Consumption</div>
+            <div class="col-6 text-lighter">
+              <div class="col-12" *ngFor="let consumption of consumptions">
+                {{consumption}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="performance?.co2_emissions" >
+            <div class="col-6 text-small-stroger">CO₂ Emissions</div>
+            <div class="col-6 text-lighter">{{performance?.co2_emissions}} g/km (combined)*</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="general?.seats">
+            <div class="col-6 text-small-stroger">Number of Seats</div>
+            <div class="col-6 text-lighter">{{general?.seats}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="general?.doors" >
+            <div class="col-6 text-small-stroger">Door Count</div>
+            <div class="col-6 text-lighter">{{general?.doors}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="chassis?.drivewheels">
+            <div class="col-6 text-small-stroger">Wheel Drive System</div>
+            <div class="col-6 text-lighter">{{chassis?.drivewheels}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="chassis?.transmission">
+            <div class="col-6 text-small-stroger">Gearbox</div>
+            <div class="col-6 text-lighter">{{gearboxInfo}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="controls.length>0">
+            <div class="col-6 text-small-stroger">Controls</div>
+            <div class="col-6 text-lighter">
+              <div class="col-12" *ngFor="let control of controls">
+                {{control}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="performance?.emission" >
+            <div class="col-6 text-small-stroger">Emission Class</div>
+            <div class="col-6 text-lighter">{{performance?.emission}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="performance?.emissionSticker">
+            <div class="col-6 text-small-stroger">Emissions Sticker</div>
+            <div class="col-6 text-lighter">{{performance?.emissionSticker}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="firstRegistration">
+            <div class="col-6 text-small-stroger">First Registration</div>
+            <div class="col-6 text-lighter">{{firstRegistration}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="condition?.inspectionUntil">
+            <div class="col-6 text-small-stroger">Inspection Until</div>
+            <div class="col-6 text-lighter">{{condition?.inspectionUntil |date:'MM/yyyy'}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="condition?.owners">
+            <div class="col-6 text-small-stroger">Number of Vehicle Owners</div>
+            <div class="col-6 text-lighter">{{condition?.owners}}</div>
+          </div>
+
+
+          <div class="row m-0  py-2" *ngIf="hu">
+            <div class="col-6 text-small-stroger">Next Vehicle Inspection</div>
+            <div class="col-6 text-lighter">{{hu}}</div>
+          </div>
+
+
+
+          <div class="row m-0  py-2" *ngIf="comfort?.climatisation">
+            <div class="col-6 text-small-stroger">Climatisation</div>
+            <div class="col-6 text-lighter">{{comfort?.climatisation}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="parkingSensonrs">
+            <div class="col-6 text-small-stroger">Parking sensors</div>
+            <div class="col-6 text-lighter">{{parkingSensonrs}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="heatedSeats">
+            <div class="col-6 text-small-stroger">Heated Seats</div>
+            <div class="col-6 text-lighter">{{heatedSeats}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="elSeats">
+            <div class="col-6 text-small-stroger">Electric adjustable seats</div>
+            <div class="col-6 text-lighter">{{elSeats}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="safety?.airbags">
+            <div class="col-6 text-small-stroger">Airbags</div>
+            <div class="col-6 text-lighter">{{safety?.airbags}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="exteriorColor">
+            <div class="col-6 text-small-stroger">Color</div>
+            <div class="col-6 text-lighter">{{exteriorColor}}</div>
+          </div>
+
+          <div class="row m-0  py-2" *ngIf="interiorDesign">
+            <div class="col-6 text-small-stroger">Interior Design</div>
+            <div class="col-6 text-lighter">{{interiorDesign}}</div>
+          </div>
+
+
+
+          <!-- <div class="row m-0 py-2" *ngFor="let tech of techData; let i = index" [ngStyle]=" (i%2==0) && {'background-color':'#f7f7f7'} || null">
+            <div class="col-6 text-bold">{{tech.name}}</div>
+            <div class="col-6 text">{{tech.value}}</div>
+          </div> -->
+        </div>
+      </div>
+
+
+
+      <!-- features (checkboxes) -->
+      <div class="content" *ngIf="features.length">
+        <div class="container px-4 py-3">
+          <div class="subtitle-bold border-bottom">Features</div>
+
+          <div class="row pt-4">
+            <div class="col-md-6 checked text-lighter" *ngFor="let feature of features">
+              {{feature}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- description -->
+      <div class="content" *ngIf="details?.description">
+        <div class="container px-4 py-3">
+          <div class="subtitle-bold border-bottom">Description</div>
+          <div class="text-lighter pt-4">
+            <p>{{details?.description}}</p>
+          </div>
+        </div>
+      </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+
+    <!-- side info -->
+    <div class="layout-cell">
+
+      <!-- <div class="content d-flex flex-column py-2 px-3    m-3" style="background-color: white;"> -->
+      <div class="content py-4 px-3" >
+        <!-- title -->
+        <div class="title">{{title}}</div>
+        <div class="modification" >{{general?.modification}}</div>
+        <div class="subtitle pb-4" >{{details?.subtitle}}</div>
+
+        <!-- price -->
+        <div class="d-flex flex-wrap py-3 justify-content-center border-top border-bottom">
+          <div class="price pe-1">{{price|currency:'EUR':'symbol' : '1.0-0'}} </div>
+          <div class="price-addition-info align-self-center" *ngIf="negotiable">{{negotiable}}</div>
+        </div>
+
+        <!-- <hr> -->
+
+        <!-- name-address -->
+
+        <div class="subtitle-bold pt-4" style="text-align: center;">{{sellerName}}</div>
+        <div class="text" style="text-align: center;">{{location}}</div>
+
+
+        <!-- contacts -->
+
+        <div *ngIf="phone" class="text-bold-14 pb-3">Phone:{{phone}}</div>
+        <button class="btn btn-warning" style="width: 100%;" (click)="inProgress()">Write Email</button>
+
+
+        <div class="d-flex flex-wrap pt-2 gap-2">
+          <button class="btn btn-outline-dark flex-fill" (click)="inProgress()">Park</button>
+          <button class="btn btn-outline-dark flex-fill" (click)="inProgress()">Share</button>
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<pre></pre>
+
+
+
+
+
+
+
+

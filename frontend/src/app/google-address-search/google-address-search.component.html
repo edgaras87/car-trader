@@ -1,0 +1,69 @@
+
+<input
+  id="searchTextField"
+  type="search"
+
+  [placeholder]="placeholder"
+  autocomplete="on"
+  class="form-control"
+  [ngStyle]="styles"
+  (focus)="this.onFocus()"
+
+  (blur)="onBlur()"
+  [(ngModel)]="currentInput"
+  (ngModelChange)="isBlank($event)"
+
+  [disabled]="!selectedCountry"
+
+
+
+  />
+  <!--
+
+      size="50"
+    [(ngModel)]="currentInput"
+  (ngModelChange)="isBlank($event)" -->
+
+  <!-- <button type="button" (click)="removeAutocompleteListner()">del</button>
+  <button type="button" (click)="initNew()">init</button> -->
+<!--
+  [(ngModel)]="currentInput"
+  (ngModelChange)="isBlank($event)" -->
+
+<!-- <pre>{{foundLocation|json}}</pre> -->
+<!--
+<input
+  type="search"
+  class="form-control"
+
+  [ngStyle]="styles"
+
+  name="location"
+  id="autocomplete"
+  placeholder="Any"
+  [(ngModel)]="currentInput"
+  (ngModelChange)="detectLocation($event)"
+
+  (change)="changeToLatestLocation()"
+
+  [attr.list]="searchType">
+<datalist [id]="searchType" >
+  <option *ngFor="let prediction of predictions" [value]="prediction.description"></option>
+</datalist>
+
+-->
+
+<!-- testVar<br>
+<pre>{{testVar|json}}</pre>
+-->
+
+<!--
+current<br>
+<pre>{{currentInput|json}}</pre>
+last<br>
+<pre>{{lastInput|json}}</pre> -->
+
+
+
+
+

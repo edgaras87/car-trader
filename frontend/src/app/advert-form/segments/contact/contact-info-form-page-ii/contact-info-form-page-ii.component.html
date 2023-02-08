@@ -1,0 +1,86 @@
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+    <div class="navigationPath">4. Contact</div>
+    <h1 class="pageTitle">Address</h1>
+
+    <form *ngIf="form" [formGroup]="form">
+
+      <div class="row pb-2 ">
+        <label class="inputLabel">Country</label>
+        <div class="col">
+          <select class="form-select" formControlName="country" (ngModelChange)="resetAddressFields()">
+            <option [ngValue]="null">Please select</option>
+            <option *ngFor="let countryKey of countryKeys" [ngValue]="countryKey">
+              {{countryValue(countryKey)}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+
+
+
+
+      <div class="row pb-2">
+
+        <div class="col-9">
+          <label class="inputLabel">Street</label>
+          <input class="form-control" type="text" formControlName="route" style="width: 100%;">
+          <ng-container  *ngIf="form?.get('route')?.invalid && (form?.get('route')?.touched || form?.get('route')?.dirty)">
+            <small *ngIf="form?.get('route')?.hasError('required')" class="text-danger">Can't be empty!</small>
+          </ng-container>
+        </div>
+        <div class="col-3">
+          <label class="inputLabel">Nr</label>
+          <input class="form-control" type="text" formControlName="street_number" style="width: 100%;">
+          <ng-container  *ngIf="form?.get('street_number')?.invalid && (form?.get('street_number')?.touched || form?.get('street_number')?.dirty)">
+            <small *ngIf="form?.get('street_number')?.hasError('required')" class="text-danger">Can't be empty!</small>
+          </ng-container>
+        </div>
+
+      </div>
+
+      <div class="row pb-2">
+
+        <div class="col-6">
+          <label class="inputLabel">Postal Code</label>
+
+          <app-google-address-search
+
+            [selectedCountry]="form.value.country"
+            [searchType]="'postal_code'"
+            [latitude]="form.value.location.latitude"
+            [longitude]="form.value.location.longitude"
+            [locality]="form.value.locality"
+            [postal_code]="form.value.postal_code"
+            (foundLocationOutput)="setLocation($event)"
+          ></app-google-address-search>
+
+          <ng-container  *ngIf="form?.get('postal_code')?.invalid && (form?.get('postal_code')?.touched || form?.get('postal_code')?.dirty)">
+            <small *ngIf="form?.get('postal_code')?.hasError('required')" class="text-danger">Can't be empty!</small>
+          </ng-container>
+        </div>
+        <div class="col-6">
+          <label class="inputLabel">City</label>
+          <input class="form-control" type="text" formControlName="locality" [attr.disabled]="true" >
+          <ng-container  *ngIf="form?.get('locality')?.invalid && (form?.get('locality')?.touched || form?.get('locality')?.dirty)">
+            <small *ngIf="form?.get('locality')?.hasError('required')" class="text-danger">Can't be empty!</small>
+          </ng-container>
+        </div>
+
+      </div>
+
+
+    </form>
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+  </div>
+
+</div>
+
+

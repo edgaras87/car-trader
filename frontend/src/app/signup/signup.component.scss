@@ -1,0 +1,16 @@
+input[type="radio"]::after,input[type="checkbox"]::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 1000;
+  font-size: 15px;
+
+  display: none;
+
+}
+
+
+
+.alert {
+  color: red;
+  padding: 0;
+  margin: 0;
+}

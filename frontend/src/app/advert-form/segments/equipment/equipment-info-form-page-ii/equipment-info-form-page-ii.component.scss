@@ -1,0 +1,24 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+
+}
+
+.content-cell {
+  // width: 100%;
+  order: 1;
+  // height: 100%;
+  // margin: 0px;
+  // padding: 0px;
+}
+
+.content-cell:nth-last-child(2) {
+  order: 2;
+}
+.content-cell:nth-last-child(3) {
+  order: 3;
+}
+

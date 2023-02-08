@@ -1,0 +1,50 @@
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+    <div class="navigationPath">3. Details</div>
+    <h1 class="pageTitle">Pictures & video</h1>
+
+    <label class="sectionTitle">images</label>
+    <hr class="my-0 pb-4">
+
+
+    <ng-container *ngFor="let img of images.value; let i=index">
+
+      {{i}} name: {{img.name}}
+      <div class="row pb-3">
+
+        <div class="col image-frame">
+          <ik-image style="width: 100%;" [src]="img.url+'&tr=w-600,h-480,c-maintain_ratio'"></ik-image>
+          <div class="pt-2">
+            <button style="width: 100%;" class="btn btn-danger" (click)="removeImage(i)">delete</button>
+          </div>
+        </div>
+
+      </div>
+
+    </ng-container>
+
+
+    <div class="imageDropzone">
+      <input type="file" multiple="multiple" id="file" (change)="onSelectFile($event)" accept=".jpg, .png" />
+      <label class="select-image-btn" for="file"><img src="../../../../../assets/images/svg/add_a_photo.svg"
+          style="width: 24px; height: 24px; color: white;">&nbsp; Select pictures</label>
+
+    </div>
+
+
+
+
+    <div class="grid-container pb-2 pt-4">
+
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="onChangeStep('back')">back to
+        menu</button>
+
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="onChangeStep('forward')">next</button>
+
+    </div>
+
+  </div>
+</div>

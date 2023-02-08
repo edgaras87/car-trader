@@ -1,0 +1,113 @@
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+
+    <div class="navigationPath">2. Equipment</div>
+    <h1 class="pageTitle">Safety</h1>
+
+
+
+    <form *ngIf="form" [formGroup]="form">
+
+      <!-- assistence -->
+      <label class="sectionTitle">Assistance systems</label>
+      <hr class="my-0 pb-4">
+      <div class="content-grid">
+
+        <div class="content-cell" *ngFor="let assistence of assistenceCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="assistence" [formControlName]="assistence">
+            <label class="checkbox-text small-text" [for]="assistence">{{checkboxText(assistence)}}</label>
+          </label>
+        </div>
+
+        <div class="content-cell">
+          <label class="inputLabel">Cruise control</label>
+          <select class="form-select" formControlName="cruise">
+            <option [ngValue]="null">Please select</option>
+            <option *ngFor="let cruise of cruiseOptions" [ngValue]="cruise">
+              {{cruise}}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+
+      <!-- airbags -->
+      <label class="sectionTitle">Occupant protection</label>
+      <hr class="my-0 pb-4">
+      <div class="content-grid">
+        <div>
+          <label class="inputLabel">Airbags</label>
+          <select class="form-select" formControlName="airbags">
+            <option [ngValue]="null">Please select</option>
+            <option *ngFor="let airbags of airbagsOptions" [ngValue]="airbags">
+              {{airbags}}
+            </option>
+          </select>
+        </div>
+
+        <div *ngFor="let airbags of airbagsCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="airbags" [formControlName]="airbags">
+            <label class="checkbox-text small-text" [for]="airbags">{{checkboxText(airbags)}}</label>
+          </label>
+        </div>
+
+      </div>
+
+
+      <!-- headlights -->
+      <label class="sectionTitle">Light and sight</label>
+      <hr class="my-0 pb-4">
+      <div class="content-grid">
+        <div>
+          <select class="form-select" formControlName="headlights">
+            <option [ngValue]="null">Please select</option>
+            <option *ngFor="let headlights of headlightsOptions" [ngValue]="headlights">
+              {{headlights}}
+            </option>
+          </select>
+        </div>
+
+        <div *ngFor="let headlight of headlightCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="headlight" [formControlName]="headlight">
+            <label class="checkbox-text small-text" [for]="headlight">{{checkboxText(headlight)}}</label>
+          </label>
+        </div>
+
+      </div>
+
+
+
+
+      <!-- protection -->
+      <label class="sectionTitle">Theft protection</label>
+      <hr class="my-0 pb-4">
+
+      <div class="content-grid">
+        <div *ngFor="let protection of protectionCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="protection" [formControlName]="protection">
+            <label class="checkbox-text small-text" [for]="protection">{{checkboxText(protection)}}</label>
+          </label>
+        </div>
+      </div>
+
+    </form>
+
+
+
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+
+  </div>
+</div>
+

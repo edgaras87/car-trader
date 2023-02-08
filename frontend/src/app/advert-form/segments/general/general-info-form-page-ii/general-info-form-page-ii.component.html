@@ -1,0 +1,240 @@
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+    <div class="navigationPath">1. Vehicle data</div>
+    <h1 class="pageTitle">Engine & environment</h1>
+
+    <label class="sectionTitle">Drive</label>
+    <hr class="my-0 pb-4">
+
+
+    <form *ngIf="performance" [formGroup]="performance" id="formId">
+      <!-- Performance -->
+
+        <!-- fuel -->
+        <label class="inputLabel" for="fuel"><span style="color: red;">*</span> Fuel</label>
+        <div class="row pb-2">
+
+          <div class="col">
+            <select class="form-select" formControlName="fuel">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let fuel of fuels" [ngValue]="fuel">
+                {{fuel}}
+              </option>
+            </select>
+            <ng-container  *ngIf="performance?.get('fuel')?.invalid && (performance?.get('fuel')?.touched || performance?.get('fuel')?.dirty)">
+              <small *ngIf="performance?.get('fuel')?.hasError('required')" class="text-danger">Can't be empty!</small>
+            </ng-container>
+          </div>
+        </div>
+    </form>
+
+
+
+      <form *ngIf="engine" [formGroup]="engine">
+
+
+        <!-- motor power-->
+        <label class="inputLabel" for="Power">Motor power</label>
+        <div class="grid-container pb-2" >
+
+          <div>
+            <input
+              class="form-control"
+              type="text"
+              formControlName="power"
+              [value]="engine.value.power | calcEnginePower:powerType.value"
+
+
+
+              enginePowerDirective
+              [powerTypeInDirective]="powerType.value"
+              maxlength="4">
+              <!-- <ng-container  *ngIf="engine?.get('power')?.invalid && (engine?.get('power')?.touched || engine?.get('power')?.dirty)">
+                <small *ngIf="engine?.get('power')?.hasError('required')" class="text-danger">Can't be empty!</small>
+              </ng-container> -->
+          </div>
+          <div>
+            <!-- later chack!!! is this normal way todo or is there a better way (change)="powerType" -->
+            <select class="form-select" #powerType (change)="powerType">
+              <option value="hp" selected>Hp</option>
+              <option value="kw">kW</option>
+            </select>
+          </div>
+
+        </div>
+
+        <!-- cubic capacity -->
+        <div *ngIf="isEngineNotElectric" class="row pb-2">
+          <div class="col">
+            <label class="inputLabel" for="Capacity">Cubic Capacity</label>
+            <div class="placeholder" style="width: 100%;" data-placeholder="cm³">
+              <input
+                class="form-control with-placeholder"
+                type="text"
+                formControlName="cubicCapacity"
+                [value]="engine.value.cubicCapacity | commaNumber"
+                maxlength="6"
+
+                commaNumberDirective
+                >
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </form>
+
+      <form *ngIf="chassis" [formGroup]="chassis">
+        <!-- transmission -->
+        <div class="row pb-3">
+          <label class="inputLabel" for="Transmission">Gearbox</label>
+          <div class="col">
+            <select class="form-select" formControlName="transmission">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let gearbox of gearboxes" [ngValue]="gearbox">
+                {{capitalizeFirstLetter(gearbox)}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- paddle shifter -->
+        <div class="row pb-3">
+          <div class="col">
+
+            <!-- <label class="checkbox-container"><input type="checkbox" formControlName="paddleshifter">paddle shifter</label> -->
+            <label class="checkbox-container">
+              <input type="checkbox" id="paddleshifter" formControlName="paddleshifter">
+              <label class="checkbox-text small-text" for="paddleshifter">{{checkboxText('paddleshifter')}}</label>
+            </label>
+          </div>
+        </div>
+
+        <!-- wheeldrive -->
+        <div class="row pb-3">
+          <label class="inputLabel" for="WheelDrive">Wheel Drive System</label>
+          <div class="col">
+            <select class="form-select" formControlName="drivewheels">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let wheeldrive of wheeldrives" [ngValue]="wheeldrive">
+                {{wheeldrive}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+      </form>
+      <label class="sectionTitle pt-5">Environment & consumption</label>
+      <hr class="my-0 pb-4">
+
+
+      <form *ngIf="performance" [formGroup]="performance">
+
+        <!-- emission class -->
+        <div class="row pb-3">
+          <label class="inputLabel" for="Emission">Emission Class</label>
+          <div class="col">
+            <select class="form-select" formControlName="emission">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let emissionClass of emissionClasses" [ngValue]="emissionClass">
+                {{emissionClass}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- emission sticker -->
+        <div class="row pb-3">
+          <label class="inputLabel" for="Emission">Emission Sticker</label>
+          <div class="col">
+            <select class="form-select" formControlName="emissionSticker">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let emissionSticker of emissionStickers" [ngValue]="emissionSticker">
+                {{emissionSticker}}
+              </option>
+            </select>
+          </div>
+        </div>
+
+
+        <!-- consumption urban -->
+        <div class="row pb-3" style="padding: 0px 12px;">
+          <label class="inputLabel px-0" for="Consumption_urban">Consumption Urban</label>
+          <div class="placeholder p-0" style="width: 100%;" data-placeholder="l/100 km">
+            <input
+              class="form-control with-placeholder"
+              type="text"
+              formControlName="consumption_urban"
+              stringToNumber
+              [isFloat]="true"
+              maxlength="5"
+              >
+          </div>
+        </div>
+
+        <!-- consumption extra urban -->
+        <div class="row pb-3" style="padding: 0px 12px;">
+          <label class="inputLabel px-0" for="Consumption_extra_urban">Consumption Extra Urban</label>
+          <div class="placeholder p-0" style="width: 100%;" data-placeholder="l/100 km">
+            <input
+              class="form-control with-placeholder"
+              type="text"
+              formControlName="consumption_extra_urban"
+              stringToNumber
+              [isFloat]="true"
+              maxlength="5">
+          </div>
+
+        </div>
+
+        <!-- consumption combined -->
+        <div class="row pb-3" style="padding: 0px 12px;">
+          <label class="inputLabel px-0" for="Consumption_combined">Consumption Combined</label>
+          <div class="placeholder p-0" style="width: 100%;" data-placeholder="l/100 km">
+            <input
+              class="form-control with-placeholder"
+              type="text"
+              formControlName="consumption_combined"
+              stringToNumber
+              [isFloat]="true"
+              maxlength="5">
+          </div>
+        </div>
+
+        <!-- co2 emission -->
+        <div class="row pb-3" style="padding: 0px 12px;">
+          <label class="inputLabel px-0" for="Emission">CO2 Emission</label>
+          <div class="placeholder p-0" style="width: 100%;" data-placeholder="g/km">
+            <input
+
+              class="form-control with-placeholder"
+              type="text"
+              formControlName="co2_emissions"
+              stringToNumber
+              [isFloat]="true"
+              maxlength="5">
+          </div>
+        </div>
+
+
+      </form>
+
+
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+
+
+
+
+
+  </div>
+</div>

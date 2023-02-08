@@ -1,0 +1,43 @@
+
+
+
+// input[type="radio"] + label {
+//   display: inline-block;
+//   margin: 0.2em;
+// }
+
+// input[type="radio"] {
+//   display: none;
+// }
+
+
+// input[type="radio"] + label::before {
+//   content: "\2714";
+//   border: 0.1em solid #000;
+//   border-radius: 0.2em;
+//   display: inline-block;
+//   width: 1em;
+//   height: 1em;
+//   padding-left: 0.6em;
+//   padding-bottom: 0.6em;
+
+//   margin-right: 0.2em;
+//   vertical-align: bottom;
+//   color: transparent;
+// }
+
+// input[type="radio"]:checked + label::before {
+//   background-color: red;
+//   color: #000;
+// }
+
+@media (min-width: 576px) {
+  .grid-container {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+}
+

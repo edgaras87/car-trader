@@ -1,0 +1,7 @@
+.link-decoration {
+  color: rgb(224, 75, 0);
+  cursor: pointer;
+  text-decoration: underline;
+  -webkit-text-decoration-color: rgba(224, 75, 0, 0.5);
+          text-decoration-color: rgba(224, 75, 0, 0.5);
+}/*# sourceMappingURL=general-info-form-page-i.component.css.map */

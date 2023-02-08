@@ -1,0 +1,26 @@
+// .box {
+//   display: flex;
+//   flex-flow: column;
+//   min-height: 100vh;
+//   background-color: burlywood;
+// }
+
+// .box .row.content {
+
+//   flex-grow: 1;
+//   background-color: rgb(193, 123, 159);
+//   margin: 0;
+//   padding: 0;
+// }
+
+.background {
+
+  min-height: 100vh;
+  background-color: #edeef0;
+}
+
+
+router-outlet {
+  height: 100%;
+  background-color: red;
+}

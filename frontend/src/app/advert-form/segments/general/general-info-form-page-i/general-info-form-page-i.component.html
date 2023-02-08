@@ -1,0 +1,126 @@
+<div class="background py-5">
+
+
+  <div class="main-container-small content p-5">
+
+    <div class="navigationPath">1. Vehicle data</div>
+
+
+
+    <form *ngIf="form" [formGroup]="form">
+
+      <label class="sectionTitle">Your vehicle</label>
+      <hr class="my-0 pb-4">
+
+
+      <!-- <div formGroupName="general"> -->
+        <!-- brand and model -->
+        <div class="grid-container">
+          <div>
+            <label class="inputLabel" for="brand"><span style="color: red;">*</span> Brand</label>
+            <select class="form-select" id="brand" disabled>
+              <option [ngValue]="info.brand">{{info.brand}}</option>
+            </select>
+          </div>
+          <div>
+            <label class="inputLabel" for="model"><span style="color: red;">*</span> Model</label>
+            <select class="form-select" id="model" disabled>
+              <option [ngValue]="info.model">{{info.model}}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- warning -->
+        <div class="row pb-2">
+          <div style="font-size: small;">To change 'brand' or 'model' you have to <a class="link-decoration"
+              routerLink="/newAd">create a new ad</a> .</div>
+        </div>
+
+        <!-- year and month (first registration) -->
+        <div class="grid-container pb-2">
+
+          <!-- year -->
+          <div>
+            <label class="inputLabel" for="firstRegistration"><span style="color: red;">*</span> Year</label>
+            <select class="form-select" formControlName="year" (change)="setProducedTimestamp()">
+              <option [ngValue]="null">Year</option>
+              <option *ngFor="let year of years" [ngValue]="year">
+                {{year}}
+              </option>
+            </select>
+            <ng-container  *ngIf="form?.get('year')?.invalid && (form?.get('year')?.touched || form?.get('year')?.dirty)">
+
+              <small *ngIf="form?.get('year')?.hasError('required')" class="text-danger">Can't be empty!</small>
+            </ng-container>
+          </div>
+
+          <!-- month -->
+          <div>
+            <label class="inputLabel" for="firstRegistration"><span style="color: red;">*</span> Month</label>
+            <select class="form-select" formControlName="month" (change)="setProducedTimestamp()">
+              <option [ngValue]="null">Month</option>
+              <option *ngFor="let month of months, let i = index" [ngValue]="i">
+                {{month}}
+              </option>
+            </select>
+            <ng-container  *ngIf="form?.get('month')?.invalid && (form?.get('month')?.touched || form?.get('month')?.dirty)">
+              <small *ngIf="form?.get('month')?.hasError('required')" class="text-danger">Can't be empty!</small>
+            </ng-container>
+
+          </div>
+
+        </div>
+
+        <!-- body -->
+        <div class="row pb-2">
+          <label class="inputLabel" for="Body">Category:</label>
+          <div class="col">
+            <select class="form-select" formControlName="body">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let body of bodies" [ngValue]="body">
+                {{body}}
+              </option>
+            </select>
+            <ng-container  *ngIf="form?.get('body')?.invalid && (form?.get('body')?.touched || form?.get('body')?.dirty)">
+              <small *ngIf="form?.get('body')?.hasError('required')" class="text-danger">Can't be empty!</small>
+            </ng-container>
+          </div>
+        </div>
+
+
+        <div class="grid-container pb-2">
+
+          <!-- doors -->
+          <div>
+            <label class="inputLabel" for="Doors">Number of doors:</label>
+            <select class="form-select" formControlName="doors">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let door of doors" [ngValue]="door">
+                {{door}}
+              </option>
+            </select>
+          </div>
+
+          <!-- seats -->
+          <div>
+            <label class="inputLabel" for="Seats">Number of seats:</label>
+            <input class="form-control" type="text" formControlName="seats" stringToNumber maxlength="2">
+          </div>
+        </div>
+      <!-- </div> -->
+
+
+    </form>
+
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+  </div>
+
+
+
+
+</div>
+

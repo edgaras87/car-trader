@@ -1,0 +1,156 @@
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+    <div class="navigationPath">2. Equipment</div>
+    <h1 class="pageTitle">Comfort</h1>
+
+    <label class="sectionTitle">Climate Control</label>
+    <hr class="my-0 pb-4">
+
+    <form *ngIf="form" [formGroup]="form">
+      <!-- <div formGroupName="comfort"> -->
+
+
+        <!-- climatisation -->
+        <div class="content-grid">
+          <div>
+            <label class="inputLabel">Climatisation</label>
+            <select class="form-select" formControlName="climatisation">
+              <option [ngValue]="null">Please select</option>
+              <option *ngFor="let climatisation of climatisationOptions" [ngValue]="climatisation">
+                {{climatisation}}
+              </option>
+            </select>
+          </div>
+
+          <div *ngFor="let climatisation of climatisationCheckboxes">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="climatisation" [formControlName]="climatisation">
+              <label class="checkbox-text small-text" [for]="climatisation">{{checkboxText(climatisation)}}</label>
+            </label>
+          </div>
+
+        </div>
+
+
+
+
+
+        <!-- assistent -->
+        <label class="sectionTitle">Parking sensors</label>
+        <hr class="my-0 pb-4">
+
+        <div class="content-grid pb-4">
+          <div *ngFor="let assistent of assistentCheckboxes">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="assistent" [formControlName]="assistent">
+              <label class="checkbox-text small-text" [for]="assistent">{{checkboxText(assistent)}}</label>
+            </label>
+          </div>
+        </div>
+
+        <label class="inputLabel">Acoustic parking assistent</label>
+        <div class="grid-container  pb-2">
+          <div class="col" *ngFor="let park of acousticParkingAssist">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="'acoustic-parking-'+park.value" [checked]="park.checked" [value]="park.value"
+                (change)="onAcousticParkingAssistSelect($event)">
+              <label class="checkbox-text small-text" [for]="'acoustic-parking-'+park.value">{{park.value}}</label>
+            </label>
+          </div>
+        </div>
+
+        <label class="inputLabel">Visual parking assistent</label>
+        <div class="grid-container pb-4">
+          <div class="col" *ngFor="let park of visualParkingAssist">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="'visual-parking-'+park.value" [checked]="park.checked" [value]="park.value"
+                (change)="onVisualParkingAssistSelect($event)">
+              <label class="checkbox-text small-text" [for]="'visual-parking-'+park.value">{{park.value}}</label>
+            </label>
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- seats -->
+        <label class="sectionTitle">Seats</label>
+        <hr class="my-0 pb-4">
+
+        <label class="inputLabel">Heated seats</label>
+        <div class="grid-container pb-2">
+          <div class="col" *ngFor="let heatedSeat of heatedSeats">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="'heated-seat-'+heatedSeat.value" [checked]="heatedSeat.checked"
+                [value]="heatedSeat.value" (change)="onHeatedSeatsSelect($event)">
+              <label class="checkbox-text small-text"
+                [for]="'heated-seat-'+heatedSeat.value">{{heatedSeat.value}}</label>
+            </label>
+          </div>
+        </div>
+
+        <label class="inputLabel">Electric adjustable seats</label>
+        <div class="grid-container pb-4">
+          <div class="col" *ngFor="let elSeat of elSeats">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="'el-seat-'+elSeat.value" [checked]="elSeat.checked" [value]="elSeat.value"
+                (change)="onElSeatsSelect($event)">
+              <label class="checkbox-text small-text" [for]="'el-seat-'+elSeat.value">{{elSeat.value}}</label>
+            </label>
+          </div>
+        </div>
+
+
+        <label class="inputLabel">Other features</label>
+        <div class="content-grid">
+          <div *ngFor="let seatFeature of seatFeatureCheckboxes">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="seatFeature" [formControlName]="seatFeature">
+              <label class="checkbox-text small-text" [for]="seatFeature">{{checkboxText(seatFeature)}}</label>
+            </label>
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- Other comfort equipment -->
+        <label class="sectionTitle">Other comfort equipment</label>
+        <hr class="my-0 pb-4">
+
+        <div class="content-grid">
+          <div *ngFor="let comfortFeature of comfortFeatureCheckboxes">
+            <label class="checkbox-container">
+              <input type="checkbox" [id]="comfortFeature" [formControlName]="comfortFeature">
+              <label class="checkbox-text small-text" [for]="comfortFeature">{{checkboxText(comfortFeature)}}</label>
+            </label>
+          </div>
+        </div>
+
+
+
+
+
+
+
+    </form>
+      <div class="grid-container pb-2 pt-4">
+        <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+        <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+      </div>
+
+
+
+
+
+
+  </div>
+</div>
+

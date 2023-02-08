@@ -1,0 +1,102 @@
+
+
+
+<ng-container [ngSwitch]="currentStep$ | async">
+
+  <app-initial
+    *ngSwitchCase="'initialInfo'"
+    [mainForm]="mainForm"
+  ></app-initial>
+
+
+  <app-menu
+    *ngSwitchCase="'formSectionsMenu'"
+    [mainForm]="mainForm"
+    (changeStep)="chengeStepInMenu($event)"
+  ></app-menu>
+
+  <app-general-info-form-page-i
+    *ngSwitchCase="'generalInfoPage1'"
+    [form]="getNestedForm('generalInfo','general')"
+    (changeStep)="chengeStepInSegment('generalInfoPage1Step', $event)"
+  ></app-general-info-form-page-i>
+
+
+  <app-general-info-form-page-ii
+    *ngSwitchCase="'generalInfoPage2'"
+    [performance]="this.getNestedForm('generalInfo', 'performance')"
+    [engine]="this.getNestedForm('generalInfo', 'engine')"
+    [chassis]="this.getNestedForm('generalInfo', 'chassis')"
+    (changeStep)="chengeStepInSegment('generalInfoPage2Step', $event)"
+  ></app-general-info-form-page-ii>
+
+
+  <app-general-info-form-page-iii
+    *ngSwitchCase="'generalInfoPage3'"
+    [condition]="this.getNestedForm('generalInfo', 'condition')"
+    (changeStep)="chengeStepInSegment('generalInfoPage3Step', $event)"
+    ></app-general-info-form-page-iii>
+
+  <app-equipment-info-form-page-i
+    *ngSwitchCase="'equipmentInfoPage1'"
+    [form]="this.getNestedForm('equipmentInfo', 'interiorExterior')"
+    (changeStep)="chengeStepInSegment('equipmentInfoPage1Step', $event)"
+  ></app-equipment-info-form-page-i>
+
+  <app-equipment-info-form-page-ii
+    *ngSwitchCase="'equipmentInfoPage2'"
+    [form]="this.getNestedForm('equipmentInfo', 'safety')"
+    (changeStep)="chengeStepInSegment('equipmentInfoPage2Step', $event)"
+  ></app-equipment-info-form-page-ii>
+
+  <app-equipment-info-form-page-iii
+    *ngSwitchCase="'equipmentInfoPage3'"
+    [form]="this.getNestedForm('equipmentInfo', 'comfort')"
+    (changeStep)="chengeStepInSegment('equipmentInfoPage3Step', $event)"
+  ></app-equipment-info-form-page-iii>
+
+  <app-equipment-info-form-page-iv
+    *ngSwitchCase="'equipmentInfoPage4'"
+    [form]="this.getNestedForm('equipmentInfo', 'infotainment')"
+    (changeStep)="chengeStepInSegment('equipmentInfoPage4Step', $event)"
+  ></app-equipment-info-form-page-iv>
+
+
+  <app-equipment-info-form-page-v
+    *ngSwitchCase="'equipmentInfoPage5'"
+    [form]="this.getNestedForm('equipmentInfo', 'extra')"
+    (changeStep)="chengeStepInSegment('equipmentInfoPage5Step', $event)"
+  ></app-equipment-info-form-page-v>
+
+
+
+  <!-- details -->
+  <app-details-info-form-page-i
+    *ngSwitchCase="'detailsInfoPage1'"
+    [mainForm]="mainForm"
+    (changeStep)="chengeStepInSegment('detailsInfoPage1Step', $event)">
+  </app-details-info-form-page-i>
+
+
+  <app-details-info-form-page-ii
+    *ngSwitchCase="'detailsInfoPage2'"
+    [form]="getNestedForm('detailsInfo')"
+    (changeStep)="chengeStepInSegment('detailsInfoPage2Step', $event)">
+  </app-details-info-form-page-ii>
+  <!-- contact -->
+
+  <app-contact-info-form-page-i
+  *ngSwitchCase="'contactInfoPage1'"
+  [form]="getNestedForm('contactInfo', 'contact')"
+  (changeStep)="chengeStepInSegment('contactInfoPage1Step', $event)"
+  ></app-contact-info-form-page-i>
+
+  <app-contact-info-form-page-ii
+  *ngSwitchCase="'contactInfoPage2'"
+  [form]="getNestedForm('contactInfo', 'address')"
+  (changeStep)="chengeStepInSegment('contactInfoPage2Step', $event)"
+  ></app-contact-info-form-page-ii>
+
+
+</ng-container>
+

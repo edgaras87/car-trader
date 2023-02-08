@@ -1,0 +1,94 @@
+
+<div class="background p-5" >
+
+
+  <div class="main-container-small content p-5" >
+
+
+    <div class="navigationPath">2. Equipment</div>
+    <h1 class="pageTitle">Colour & Interior</h1>
+
+
+    <form *ngIf="form" [formGroup]="form">
+
+    <label class="sectionTitle">Exterior Colour</label>
+    <hr class="my-0 pb-4">
+
+
+
+    <!-- <div formGroupName="interiorExterior"> -->
+
+    <!-- EXTERIOR -->
+      <!-- exterior color -->
+      <div class="row mx-1 pb-2">
+        <ng-container *ngFor="let color of exteriorColors">
+          <div class="col-lg-3 col-md-4 col-sm-6 p-1">
+            <!-- <input type="radio" [value]="color" formControlName="exteriorColor">{{color}} -->
+            <div class="radio-wrapper">
+              <input type="radio" [id]="'exterior-'+color" [value]="color" formControlName="exteriorColor" [ngStyle]="{'background-color': color, 'color':colorOfCheck(color)}">
+              <label class="checkbox-text" [for]="'exterior-'+color">{{color}}</label>
+            </div>
+
+
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- metalic -->
+      <div class="row pb-2  mx-1">
+        <div class="col p-0">
+          <!-- <label class="checkbox-container "><input type="checkbox" formControlName="metalic">Metalic</label> -->
+          <label class="checkbox-container">
+            <input type="checkbox" id="metalic" formControlName="metalic">
+            <label class="checkbox-text" for="metalic">{{checkboxText('metalic')}}</label>
+          </label>
+
+        </div>
+      </div>
+
+      <label class="sectionTitle pt-5">Interior Design</label>
+      <hr class="my-0 pb-4">
+
+      <!-- INTERIOR -->
+      <!-- material -->
+      <label class="inputLabel">Material</label>
+      <div class="grid-container pb-3">
+
+        <ng-container *ngFor="let material of materials">
+
+            <label class="checkbox-container">
+              <input type="radio" [id]="material" [value]="material" formControlName="material">
+              <label class="checkbox-text" [for]="material">{{material}}</label>
+            </label>
+
+        </ng-container>
+      </div>
+
+      <!-- interior color -->
+      <label class="inputLabel">Color</label>
+      <div class="row mx-1 pb-3">
+
+        <ng-container *ngFor="let color of interiorColors">
+          <div class="col-lg-3 col-md-4 col-sm-6 p-1">
+
+            <div class="radio-wrapper">
+              <input type="radio" [id]="'interior-'+color" [value]="color" formControlName="interiorColor" [ngStyle]="{'background-color': color, 'color':colorOfCheck(color)}">
+              <label class="checkbox-text" [for]="'interior-'+color">{{color}}</label>
+            </div>
+
+          </div>
+        </ng-container>
+      </div>
+
+  </form>
+
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+
+</div>
+
+</div>
+

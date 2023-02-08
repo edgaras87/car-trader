@@ -1,0 +1,41 @@
+
+
+server:
+  port: 5000
+  error:
+    include-message: ALWAYS
+    include-binding-errors: ALWAYS
+    include-exception: true
+
+
+spring:
+  config:
+    import: env.yml
+  data:
+    mongodb:
+      uri: mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@portfolio.g8ztuqs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority
+      auto-index-creation: true
+
+      #authentication-database: admin
+      #username: rootuser
+      #password: rootpass
+      #database: car-trader
+      #port: 27017
+      #host: localhost
+      # for unique emails
+      # for indexing location to calc distance
+      #auto-index-creation: true
+  #mvc:
+  #  pathmatch:
+  #    matching-strategy: ANT_PATH_MATCHER # http://localhost:8080/swagger-ui/
+
+# App properties
+cartrader:
+  app:
+    jwtSecret: cartraderSecretKeylooooooooooooooooooooooooooooooooooooooooooooooong
+    jwtExpirationMs: 864000000
+    #jwtExpirationMs: 10000
+
+
+
+

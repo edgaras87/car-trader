@@ -1,0 +1,42 @@
+.imageDropzone {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  align-items: center;
+  border: 2px dashed #d9d9d9;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  padding: 36px;
+  width: 100%;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.select-image-btn {
+  color: black;
+  height: 60px;
+  width: 200px;
+  background-color: rgb(224, 75, 0);
+  border: 1px solid black;
+  border-radius: 5px;
+  position: absolute;
+  margin: auto;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-frame {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100%;
+}/*# sourceMappingURL=details-info-form-page-i.component.css.map */

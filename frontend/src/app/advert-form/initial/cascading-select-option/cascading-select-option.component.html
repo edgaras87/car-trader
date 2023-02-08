@@ -1,0 +1,28 @@
+
+<!-- <div class="row pb-2 mx-0">
+  <label class="inputLabel p-0">{{controlName}}</label> -->
+<div *ngIf="options && options.length < size;then radioContent else selectContent"></div>
+<ng-template #radioContent>
+
+  <div class="btn-group grid-4-col-container" role="group" >
+    <ng-container *ngFor="let option of options; let i=index">
+      <!-- [(ngModel)]="optionName" (change)="outputNow()"-->
+      <input type="radio" class="btn-check" id="{{controlName}}-option-btn-radio{{i}}" autocomplete="off"  [formControlName]="controlName"  [value]="option" (change)="onSelect()">
+      <label class="btn btn-outline-primary" for="{{controlName}}-option-btn-radio{{i}}" >{{option}}</label>
+    </ng-container>
+  </div>
+
+</ng-template>
+<ng-template #selectContent>
+  <!-- [(ngModel)]="controlName" (change)="outputNow()" -->
+  <!-- <select class="form-select" [formControlName]="optionName" (change)="onDoorSelect()"> -->
+  <select class="form-select" [formControlName]="controlName" (change)="onSelect()" >
+    <option [ngValue]="null">Please select</option>
+    <option *ngFor="let option of options" [ngValue]="option">
+      {{option}}
+    </option>
+  </select>
+</ng-template>
+<!-- </div> -->
+<!-- <pre>{{options|json}}</pre> -->
+<!-- <pre>{{opt|json}}</pre> -->

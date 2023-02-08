@@ -1,0 +1,83 @@
+<div class="background p-5">
+
+
+  <div class="main-container-small content p-5">
+
+
+    <div class="navigationPath">2. Equipment</div>
+    <h1 class="pageTitle">Infotainment</h1>
+
+
+    <form *ngIf="form" [formGroup]="form">
+
+
+      <!-- multimedia -->
+      <label class="sectionTitle">Multimedia</label>
+      <div class="content-grid">
+        <div *ngFor="let multimediaFeature of multimediaFeatureCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="multimediaFeature" [formControlName]="multimediaFeature">
+            <label class="checkbox-text small-text"
+              [for]="multimediaFeature">{{checkboxText(multimediaFeature)}}</label>
+          </label>
+        </div>
+      </div>
+
+
+      <!-- Handling and control -->
+      <label class="inputLabel">Handling and control</label>
+      <div class="content-grid">
+        <div *ngFor="let handlingAndControlFeature of handlingAndControlFeatureCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="handlingAndControlFeature" [formControlName]="handlingAndControlFeature">
+            <label class="checkbox-text small-text"
+              [for]="handlingAndControlFeature">{{checkboxText(handlingAndControlFeature)}}</label>
+          </label>
+        </div>
+      </div>
+
+
+      <!-- Connectivity and interfaces -->
+      <label class="sectionTitle">Connectivity and interfaces</label>
+      <hr class="my-0 pb-4">
+
+      <div class="content-grid">
+        <div *ngFor="let connectivityAndInterfacesFeature of connectivityAndInterfacesFeatureCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="connectivityAndInterfacesFeature" [formControlName]="connectivityAndInterfacesFeature">
+            <label class="checkbox-text small-text"
+              [for]="connectivityAndInterfacesFeature">{{checkboxText(connectivityAndInterfacesFeature)}}</label>
+          </label>
+        </div>
+      </div>
+
+
+
+      <!-- Cockpit display -->
+      <label class="sectionTitle">Cockpit display</label>
+      <hr class="my-0 pb-4">
+
+
+      <div class="content-grid">
+        <div *ngFor="let cockpitDisplayFeature of cockpitDisplayFeatureCheckboxes">
+          <label class="checkbox-container">
+            <input type="checkbox" [id]="cockpitDisplayFeature" [formControlName]="cockpitDisplayFeature">
+            <label class="checkbox-text small-text"
+              [for]="cockpitDisplayFeature">{{checkboxText(cockpitDisplayFeature)}}</label>
+          </label>
+        </div>
+      </div>
+
+
+
+    </form>
+
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+
+  </div>
+</div>
+

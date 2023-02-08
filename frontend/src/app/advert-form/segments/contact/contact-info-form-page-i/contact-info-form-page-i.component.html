@@ -1,0 +1,121 @@
+<div class="background p-5" >
+
+
+  <div class="main-container-small content p-5" >
+
+
+  <div class="navigationPath">4. Contact</div>
+  <h1 class="pageTitle">Name, Phone number</h1>
+  <label class="sectionTitle">Name</label>
+  <hr class="my-0 pb-4">
+
+  <form *ngIf="form" [formGroup]="form">
+
+    <label class="inputLabel">Form of Address</label>
+    <div class="row pb-2 mx-1">
+      <select class="form-select" formControlName="title">
+        <option [ngValue]="null">Please select</option>
+        <option ngValue="Mr.">Mr.</option>
+        <option ngValue="Mrs.">Mrs.</option>
+      </select>
+      <ng-container  *ngIf="form?.get('title')?.invalid && (form?.get('title')?.touched || form?.get('title')?.dirty)">
+        <small *ngIf="form?.get('title')?.hasError('required')" class="text-danger">Can't be empty!</small>
+      </ng-container>
+    </div>
+
+    <label class="inputLabel">First Name</label>
+    <div class="row pb-2 mx-1">
+      <input class="form-control" type="text" formControlName="fisrtName" maxlength="15">
+      <ng-container  *ngIf="form?.get('fisrtName')?.invalid && (form?.get('fisrtName')?.touched || form?.get('fisrtName')?.dirty)">
+        <small *ngIf="form?.get('fisrtName')?.hasError('required')" class="text-danger">Can't be empty!</small>
+        <small *ngIf="form?.get('fisrtName')?.hasError('minlength')" class="text-danger">Must be at least 3 charecters</small>
+        <small *ngIf="form?.get('fisrtName')?.hasError('maxlength')" class="text-danger">Must be at least 15 charecters</small>
+      </ng-container>
+    </div>
+
+    <label class="inputLabel">Last Name</label>
+    <div class="row pb-2 mx-1">
+      <input class="form-control" type="text" formControlName="lastName" maxlength="15">
+      <ng-container  *ngIf="form?.get('lastName')?.invalid && (form?.get('lastName')?.touched || form?.get('lastName')?.dirty)">
+        <small *ngIf="form?.get('lastName')?.hasError('required')" class="text-danger">Can't be empty!</small>
+        <small *ngIf="form?.get('lastName')?.hasError('minlength')" class="text-danger">Must be at least 3 charecters</small>
+        <small *ngIf="form?.get('lastName')?.hasError('maxlength')" class="text-danger">Must be at least 15 charecters</small>
+      </ng-container>
+    </div>
+
+    <label class="inputLabel">Should your name be displayed in the ad?</label>
+
+
+      <div class="row pb-2 mx-1">
+
+        <label class="checkbox-container">
+          <input type="radio" [value]="false" id="showName-no" formControlName="showName">
+          <label class="checkbox-text small-text" for="showName-no">No (Display: Private seller)</label>
+        </label>
+
+
+        <label class="checkbox-container">
+          <input type="radio" [value]="true" id="showName-yes" formControlName="showName">
+          <label class="checkbox-text small-text" for="showName-yes">Yes</label>
+        </label>
+        <ng-container  *ngIf="form?.get('showName')?.invalid && (form?.get('showName')?.touched || form?.get('showName')?.dirty)">
+          <small *ngIf="form?.get('showName')?.hasError('required')" class="text-danger">Can't be empty!</small>
+        </ng-container>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Phone -->
+    <label class="sectionTitle pt-5">Phone</label>
+    <hr class="my-0 pb-4">
+
+
+    <div class="row pb-2 mx-1 px-0">
+
+      <div class="col-4">
+        <label class="inputLabel">Country code</label>
+        <select class="form-select" formControlName="countryCode">
+          <option [ngValue]="null">Please select</option>
+          <option *ngFor="let countryCode of countryPhoneCodes" [ngValue]="countryPhoneCodesKey(countryCode)">
+            {{countryCode}}
+          </option>
+        </select>
+      </div>
+
+
+      <div class="col-8">
+        <label class="inputLabel">Phone number</label>
+        <!-- https://www.npmjs.com/package/ngx-intl-tel-input -->
+        <input class="form-control" type="text" formControlName="phoneNumber" allowOnlyNumbers maxlength="10">
+        <ng-container  *ngIf="form?.get('phoneNumber')?.invalid && (form?.get('phoneNumber')?.touched || form?.get('phoneNumber')?.dirty)">
+          <small *ngIf="form?.get('phoneNumber')?.hasError('required')" class="text-danger">Can't be empty!</small>
+          <small *ngIf="form?.get('phoneNumber')?.hasError('minlength')" class="text-danger">Must be at least 6 charecters</small>
+          <small *ngIf="form?.get('phoneNumber')?.hasError('maxlength')" class="text-danger">Must be at least 15 charecters</small>
+        </ng-container>
+      </div>
+    </div>
+
+
+
+    </form>
+    <div class="grid-container pb-2 pt-4">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+    </div>
+
+
+</div>
+
+</div>
+
+

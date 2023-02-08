@@ -1,0 +1,115 @@
+<div class="container py-5">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <div class="card bg-dark text-white" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
+
+          <div class="mb-md-5 mt-md-4 ">
+
+            <h2 class="fw-bold mb-2 text-uppercase">Registration</h2>
+            <p class="text-white-50 mb-5">Create your new account!</p>
+
+            <form #userForm="ngForm" novalidate>
+
+            <label class="form-label" for="typeEmailX">Email</label>
+            <div class="form-outline form-white mb-4">
+              <input
+                type="email"
+                id="typeEmailX"
+                class="form-control form-control-lg"
+                #email="ngModel"
+                name="email"
+
+                required
+                minlength="5"
+                email="true"
+
+                [ngModelOptions]="{updateOn: 'blur'}"
+                [(ngModel)]="user.email"
+              />
+
+              <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+
+                <div *ngIf="email.errors?.['required']">
+                  Email is required.
+                </div>
+
+                <div *ngIf="email.errors?.['minlength']">
+                  Email must be at least 5 characters long.
+                </div>
+
+                <div *ngIf="email.errors?.['email'] && !email.errors?.['minlength']" >
+                  Email address is not valid (eg: xx@x.x).
+                </div>
+
+              </div>
+            </div>
+
+
+            <!-- pataisyti pagal login -->
+            <div class="form-outline form-white mb-4">
+
+              <label class="form-label" for="typePasswordX">Password</label>
+              <input
+                type="password"
+                id="typePasswordX"
+                class="form-control form-control-lg"
+                [ngModelOptions]="{updateOn: 'blur'}"
+                required minlength="3"
+                #password="ngModel"
+                name="password"
+                [(ngModel)]="user.password"
+
+
+              />
+
+              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+
+                <div *ngIf="password.errors?.['required']">
+                  Password is required.
+                </div>
+
+                <div *ngIf="password.errors?.['minlength']" >
+                  Password must be at least 3 characters long.
+                </div>
+
+              </div>
+
+            </div>
+
+            <label for="account">Account type:</label>
+            <div class="mb-4">
+              <div class="form-check form-check-inline" *ngFor="let account of accounts; let i = index">
+                <input class="form-check-input" type="radio" name="accountType" [id]="'inlineRadio'+i" [(ngModel)]="user.account"
+                  [value]="account">
+                <label class="form-check-label" for="inlineRadio1">{{accountTypeLabelMapping[account]}}</label>
+              </div>
+            </div>
+
+            <div class="form-outline form-white mb-4" *ngIf="isDealer">
+              <input type="text" class="form-control form-control-lg" name="vatNumber" [(ngModel)]="user.vatNumber" />
+              <label class="form-label" for="vat">VAT Number</label>
+            </div>
+
+
+
+            <button type="button" class="btn btn-outline-light btn-lg px-5" (click)="signup(userForm)" >Sign Up</button>
+            </form>
+
+          </div>
+
+
+          <div>
+            <p class="mb-0 pt-3">You already have an account? <a routerLink="/login" class="text-white-50 fw-bold">Log
+                In</a>
+            </p>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,217 @@
+<div class="form-sections-container ">
+
+
+
+
+  <div class="container rounded-top shadow border-bottom px-5 py-4" style="background-color: white">
+    <!-- <h1 style="text-align: center;"><b>Advertisement Details</b></h1> -->
+
+
+    <h1 class="pageTitle">Create New Advert</h1>
+
+  </div>
+  <div class="container shadow border-bottom px-5 py-5" style="background-color: white">
+
+
+    <!-- <div class="main-container-small content p-5">
+
+    <h1 class="pageTitle">Create New Advert</h1>
+    <label class="sectionTitle">Basic Information</label>
+    <hr class="my-0 pb-4"> -->
+
+
+    <form *ngIf="initialInfoForm" [formGroup]="initialInfoForm">
+
+
+
+      <label class="sectionTitle">Main Information</label>
+      <hr class="my-0 pb-4">
+
+      <!-- Brand -->
+      <label class="inputLabel" for="Make">Brand</label>
+      <div class="row pb-3 mx-0">
+        <select class="form-select" formControlName="brand" (change)="deselectModel()">
+          <option [ngValue]="null">Choose your brand</option>
+          <option *ngFor="let brand of brands" [ngValue]="brand">
+            {{brand}}
+          </option>
+        </select>
+      </div>
+
+      <!-- Model -->
+      <label class="inputLabel" for="Model">Model</label>
+      <div class="row pb-3 mx-0">
+        <select class="form-select" formControlName="model" (change)="mainInfoSelected()" [disabled]="false">
+          <option [ngValue]="null">Choose your model</option>
+          <option *ngFor="let model of models" [ngValue]="model">
+            {{model}}
+          </option>
+        </select>
+
+      </div>
+
+      <!-- First Registration -->
+      <div class="grid-container pb-3">
+
+        <!-- Year -->
+        <div>
+          <label class="inputLabel" for="Year">Year</label>
+          <select class="form-select" formControlName="year" (change)="mainInfoSelected()">
+            <option [ngValue]="null">Please select</option>
+            <option *ngFor="let year of years" [ngValue]="year">
+              {{year}}
+            </option>
+          </select>
+        </div>
+
+        <!-- Month -->
+        <div>
+          <label class="inputLabel" for="Month">Month</label>
+          <select class="form-select" formControlName="month" (change)="mainInfoSelected()">
+            <option [ngValue]="null">Please select</option>
+            <option *ngFor="let month of months, let i = index" [ngValue]="i">
+              {{month}}
+            </option>
+          </select>
+        </div>
+
+      </div>
+
+
+      <!-- mileage -->
+      <div class="grid-container">
+
+        <div>
+          <label class="inputLabel">Mileage</label>
+          <div class="placeholder" style="width: 100%;" data-placeholder="km">
+            <input class="form-control with-placeholder" type="text" formControlName="mileage"
+              [value]="initialInfoForm.value.mileage | commaNumber" maxlength="9" commaNumberDirective>
+          </div>
+        </div>
+
+      </div>
+      <div *ngIf="mileageControl?.invalid && (mileageControl?.touched || mileageControl?.dirty)">
+        <small *ngIf="mileageControl?.hasError('wrongMileage')" class="text-danger">Only numbers between 1 and 9,999,999
+          are allowed!</small>
+
+      </div>
+
+      <!-- <ng-container  *ngIf="mileageControl?.invalid && (mileageControl?.touched || mileageControl?.dirty)">
+            <small *ngIf="mileageControl?.hasError('required')" class="text-danger">Can't be empty!</small>
+            <small *ngIf="mileageControl?.hasError('notNumber')" class="text-danger">you must enter number!</small>
+            <small *ngIf="mileageControl?.hasError('wrongMileage')" class="text-danger">Only numbers between 1 and 9,999,999 are allowed!</small>
+          </ng-container>-->
+
+
+      <div *ngIf="showDoorOptions">
+        <label class="sectionTitle pt-5">Model Details</label>
+        <hr class="my-0 pb-4">
+      </div>
+
+
+
+      <div class="row pb-3 mx-0" *ngIf="showDoorOptions">
+        <label class="inputLabel p-0">Doors</label>
+        <app-cascading-select-option class="p-0" controlName="door" [options]="doors"
+          (optionSelected)="additionalInfoSelected($event)"></app-cascading-select-option>
+      </div>
+
+
+
+      <div class="row pb-3 mx-0" *ngIf="showBodyOptions">
+        <label class="inputLabel p-0">Body</label>
+        <app-cascading-select-option class="p-0" controlName="body" [isDisabled]="info.door" [options]="bodies"
+          (optionSelected)="additionalInfoSelected($event)"></app-cascading-select-option>
+      </div>
+
+
+      <div class="row pb-3 mx-0" *ngIf="showFuelOptions">
+        <label class="inputLabel p-0">Fuel</label>
+        <app-cascading-select-option class="p-0" controlName="fuel" [options]="fuels"
+          (optionSelected)="additionalInfoSelected($event)"></app-cascading-select-option>
+      </div>
+
+      <!-- foem diviser into two paths: 1. knowedModel - is when we have model specifications in database, 2. unknowedModel - is unknown models for database -->
+      <div *ngIf="specifications && specifications.length > 0;then knowedModel else unknowedModel"></div>
+
+
+      <!-- Knowed Model -->
+      <ng-template #knowedModel>
+
+        <!-- description -->
+        <div class="row pb-3 mx-0" *ngIf="showDescriptionOptions">
+          <label class="inputLabel p-0">Description</label>
+          <app-cascading-select-option controlName="description" class="p-0" [options]="desriptions" [size]="0"
+            (optionSelected)="additionalInfoSelected($event)"></app-cascading-select-option>
+        </div>
+
+        <!-- final specification choose -->
+        <div class="row pb-3" *ngIf="showSpecificationOptions">
+          <div class="col">
+            <div class="d-flex flex-row">
+              <label class="inputLabel">Choose your car</label>
+            </div>
+            <ng-container *ngFor="let spec of specifications; let i=index">
+              <div class="d-flex flex-row">
+                <input type="radio" [value]="spec.id" formControlName="specId">
+                <div style="font-size: small;">
+                  <!-- make table here !!! -->
+                  {{spec.general.brand}} {{spec.general.model}} {{spec.general.modification}}, {{spec.engine.power}}kw,
+                  {{spec.general.producedFrom|date:'MM/yyyy'}} - {{spec.general.producedTill|date:'MM/yyyy'}}
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+      </ng-template>
+
+      <!-- Unknowed Model -->
+      <ng-template #unknowedModel>
+
+        <!-- Missing fields: gear (gearbox) powertrainArchitecture -->
+
+        <!-- motor power-->
+        <div *ngIf="showMotorPower">
+          <label class="inputLabel" for="Power">Motor power</label>
+          <div class="grid-container pb-3">
+
+            <input class="form-control" type="text" formControlName="power"
+              [value]="info.power | calcEnginePower:powerType.value" enginePowerDirective
+              [powerTypeInDirective]="powerType.value" maxlength="4">
+
+            <!-- later chack!!! is this normal todo or there is better way (change)="powerType" -->
+            <select class="form-select" #powerType (change)="powerType">
+              <option value="hp" selected>Hp</option>
+              <option value="kw">kW</option>
+            </select>
+
+
+          </div>
+        </div>
+
+      </ng-template>
+
+    </form>
+
+  </div>
+  <!-- <div class="main-container-small content px-5 py-4"> -->
+  <div class="container rounded-bottom shadow border-bottom px-5 py-4" style="background-color: white">
+
+    <div class="grid-container" *ngIf="showProceedButton">
+      <button type="button" class="btn btn-danger" style="width: 100%;" routerLink="/">back to menu</button>
+      <button type="button" class="btn btn-primary" (click)="start()">Proceed</button>
+    </div>
+
+    <div *ngIf="!showProceedButton">
+      <button type="button" class="btn btn-danger" style="width: 100%;" routerLink="/">back to menu</button>
+    </div>
+
+  </div>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,264 @@
+@import '../node_modules/angular-notifier/styles';
+
+
+$navbar-height: 150px;
+
+
+
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Gibson,Tahoma,Arial,sans-serif, sans-serif !important;
+  /* Add !important to overwrite all elements */
+}
+
+
+.text {
+  font-size: 14px;
+}
+
+.text-lighter {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text-medium {
+  font-size: 14px;
+}
+
+
+
+.text-bolder {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.text-bold {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.small-text {
+  font-size: 13px;
+  color: #5A5E66;
+}
+
+.text-danger {
+  // font-size: 13px;
+  color: red;
+}
+
+
+.form-select, .form-control {
+
+  font-size: 14px;
+  color: #5A5E66;
+  padding: 9px;
+}
+
+
+
+.custom-shadow {
+  box-shadow: 0 1px 2px 0 rgba(black,1);
+}
+
+.with-placeholder {
+
+  padding-right: 30px;
+}
+
+.placeholder {
+  position: relative;
+  display: inline-block;
+
+  opacity: 1;
+  background-color: white;
+}
+
+.placeholder::after {
+  position: absolute;
+  right: 9px;
+  top: 12px;
+  font-size: 14px;
+
+  content: attr(data-placeholder);
+  pointer-events: none;
+  opacity: 0.8;
+
+
+}
+
+
+
+.background {
+  background-color: #edeef0;
+  width: 100%;
+  // min-height: calc(100vh - 50px);
+  height: 100%;
+}
+
+// persidaryti atskirai kiekviename
+// .main-container {
+//   max-width: 950px;
+//   margin: 0 auto;
+// }
+
+.main-container-small {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.content {
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px 0 rgba(black,.5);
+}
+
+
+// checkbox  ( https://www.youtube.com/watch?v=y93M3RoKQUE )
+
+
+.checkbox-container {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: #fff;
+  // border: 1px solid #dbb8b8;
+  // border-radius: 4px;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  //padding: 12px;
+  padding: 18px;
+  -webkit-transition: all 50ms ease-out;
+  -o-transition: all 50ms ease-out;
+  transition: all 50ms ease-out;
+}
+
+// .checkbox-container:checked{
+// background: #fff5eb;
+//     border-color: #ffbd8a;
+// }
+
+
+.radio-wrapper {
+  // border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+
+}
+input[type="radio"],input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+
+  height: 20px;
+  width: 20px;
+  // background-color: #d5d5d5;
+  // background-color: red;
+  color: #4c4c4c;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+// label {
+//   color: #4c4c4c;
+//   font-weight: 600;
+//   cursor: pointer;
+//   padding-left: 5px;
+// }
+
+.checkbox-text {
+  color: #4c4c4c;
+  font-weight: 400;
+  cursor: pointer;
+  padding-left: 5px;
+}
+
+input[type="radio"]::after,input[type="checkbox"]::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 1000;
+  font-size: 15px;
+  content: "\f00c";
+  display: none;
+
+}
+
+input[type="radio"]:checked:after,input[type="checkbox"]:checked::after {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 576px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+
+  }
+
+}
+@media (max-width: 575px) {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+
+  }
+
+}
+
+
+
+
+
+
+.navigationPath {
+  color: #5a5e66;
+  font-size: 14.4px;
+  line-height: 1.25;
+  padding-bottom: 9px;
+}
+
+
+
+.pageTitle {
+  margin: 0 0 36px;
+  padding: 0;
+
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.sectionTitle {
+  color: black;
+  font-size: 14px;
+  font-weight:bold;
+  display: inline-block;
+  margin-bottom: 0;
+  padding-bottom: 9px;
+  line-height: 20px;
+}
+
+.inputLabel {
+  color: #4c4c4c;
+  font-size: 14px;
+  font-weight:bold;
+  display: inline-block;
+  margin-bottom: 3px;
+  padding-bottom: 0px;
+  line-height: 20px;
+}

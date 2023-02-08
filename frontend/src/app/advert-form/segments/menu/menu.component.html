@@ -1,0 +1,338 @@
+<div class="form-sections-container ">
+  <div class="container rounded-top shadow border-bottom px-5 py-4" style="background-color: white">
+    <h1 style="text-align: center;"><b>Advertisement Details</b></h1>
+  </div>
+  <div class="container shadow border-bottom px-5 py-5" style="background-color: white">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+
+          <div class="p-2">
+            <div class="d-flex">
+
+              <div class="vechicle-data-icon">
+              </div>
+
+              <div class="flex-grow-1 ps-3 ">
+                <div class="d-flex section-text">1. Vehicle data</div>
+                <div class="d-flex small-text">Main data, Engine & environment, Condition & Inspection</div>
+
+              </div>
+              <div class="d-flex justify-content-center align-items-center" style="gap: 2vh;">
+                <button *ngIf="mainForm?.value.generalInfo.completed" type="button" class="accordion-button collapsed"
+                  data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">Edit</button>
+                <button *ngIf="!mainForm?.value.generalInfo.completed" type="button" class="complete-button p-2"
+                  (click)="onChangeStep('generalInfoPage1')">Complete</button>
+              </div>
+            </div>
+          </div>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body px-2">
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Main data
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('generalInfoPage1')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Engine & environment
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('generalInfoPage2')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Condition & Inspection
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('generalInfoPage3')">Edit</a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+
+          <div class="p-2">
+            <div class="d-flex">
+
+              <div class="equipment-icon">
+              </div>
+
+              <div class="flex-grow-1 ps-3">
+                <div class="d-flex section-text">2. Equipment</div>
+                <div class="d-flex small-text">Colour & Interior, Safety, Comfort, Infotainment, Extras</div>
+
+              </div>
+              <div class="d-flex justify-content-center align-items-center" style="gap: 2vh;">
+                <button *ngIf="mainForm?.value.equipmentInfo.completed" type="button" class="accordion-button collapsed"
+                  data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo">Edit</button>
+                <button *ngIf="!mainForm?.value.equipmentInfo.completed && mainForm?.value.generalInfo.completed"
+                  type="button" class="complete-button p-2" (click)="onChangeStep('equipmentInfoPage1')">Complete</button>
+              </div>
+            </div>
+          </div>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body px-2 ">
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Colour & Interior
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('equipmentInfoPage1')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Safety
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('equipmentInfoPage2')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Comfort
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('equipmentInfoPage3')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Infotainment
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('equipmentInfoPage4')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Extras
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('equipmentInfoPage5')">Edit</a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+
+          <div class="p-2">
+            <div class="d-flex">
+
+              <div class="details-icon">
+              </div>
+
+              <div class="flex-grow-1 ps-3 ">
+                <div class="d-flex section-text">3. Details</div>
+                <div class="d-flex small-text">Pictures & video, Title & description, Price</div>
+
+
+              </div>
+              <div class="d-flex justify-content-center align-items-center" style="gap: 2vh;">
+                <button *ngIf="mainForm?.value.detailsInfo.completed" type="button" class="accordion-button collapsed"
+                  data-bs-toggle="collapse" data-bs-target="#flush-collapseThree">Edit</button>
+                <button *ngIf="!mainForm?.value.detailsInfo.completed && mainForm?.value.equipmentInfo.completed"
+                  type="button" class="complete-button p-2" (click)="onChangeStep('detailsInfoPage1')">Complete</button>
+              </div>
+            </div>
+          </div>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body px-2 pb-3">
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Pictures & video
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('detailsInfoPage1')">Edit</a>
+              </div>
+
+            </div>
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Title, description & price
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('detailsInfoPage2')">Edit</a>
+              </div>
+
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+
+          <div class="p-2">
+            <div class="d-flex">
+
+              <div class="contact-icon">
+              </div>
+
+              <div class="flex-grow-1 ps-3 ">
+                <div class="d-flex section-text">4. Contact</div>
+                <div class="d-flex small-text">Name, Address, Phone number</div>
+
+
+
+              </div>
+              <div class="d-flex justify-content-center align-items-center" style="gap: 2vh;">
+                <button *ngIf="mainForm?.value.contactInfo.completed" type="button" class="accordion-button collapsed"
+                  data-bs-toggle="collapse" data-bs-target="#flush-collapseFourth">Edit</button>
+                <button *ngIf="!mainForm?.value.contactInfo.completed && mainForm?.value.detailsInfo.completed"
+                  type="button" class="complete-button p-2" (click)="onChangeStep('contactInfoPage1')">Complete</button>
+              </div>
+            </div>
+          </div>
+        </h2>
+        <div id="flush-collapseFourth" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+          data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body px-2 pb-3">
+
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Name, Phone number
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('contactInfoPage1')">Edit</a>
+              </div>
+
+            </div>
+            <div class="wizzard-step-item">
+              <div class="wizzard-step-line">
+                <span class="v-line"></span>
+              </div>
+
+              <div class="wizzard-step-name">
+                Address
+              </div>
+              <div class="wizzard-step-button">
+                <a (click)="onChangeStep('contactInfoPage2')">Edit</a>
+              </div>
+
+            </div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+
+
+  <div class="container rounded-bottom shadow border-bottom px-5 py-4" style="background-color: white">
+
+    <div class="grid-container">
+      <button type="button" class="btn btn-danger" style="width: 100%;" (click)="update()">finish later</button>
+      <button type="button" class="btn btn-success" style="width: 100%;" [disabled]="!isPublishable"
+        (click)="publish()">publish</button>
+    </div>
+
+  </div>
+</div>
+
+

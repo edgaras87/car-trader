@@ -1,0 +1,68 @@
+<div class="background p-5" >
+
+
+  <div class="main-container-small content p-5" >
+
+    <div class="navigationPath">3. Details</div>
+    <h1 class="pageTitle">Title, description & price</h1>
+
+
+  <form *ngIf="form" [formGroup]="form">
+
+    <label class="inputLabel">Ad title</label>
+    <div class="row pb-2 mx-1" >
+      <input class="form-control" type="text" formControlName="subtitle" maxlength="80">
+    </div>
+
+    <label class="inputLabel">Vehicle description</label>
+    <div class="row pb-2 mx-1" >
+      <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="description" rows="15" placeholder="We recomend..."></textarea>
+    </div>
+
+    <label class="inputLabel">Price</label>
+    <div class="grid-container  pb-2">
+
+        <div>
+          <div class="placeholder" style="width: 100%;" data-placeholder="€">
+            <input
+              class="form-control with-placeholder"
+              type="text"
+              formControlName="price"
+              [value]="info.price | commaNumber"
+              maxlength="13"
+
+              commaNumberDirective
+              >
+          </div>
+          <ng-container  *ngIf="form?.get('price')?.invalid && (form?.get('price')?.touched || form?.get('price')?.dirty)">
+            <small *ngIf="form?.get('price')?.hasError('required')" class="text-danger">Can't be empty!</small>
+          </ng-container>
+        </div>
+
+        <div>
+          <select class="form-select" formControlName="isNegotiable">
+            <option [ngValue]="null">Please select</option>
+            <option [ngValue]="false">Fixed</option>
+            <option [ngValue]="true">Negotiable</option>
+          </select>
+        </div>
+
+
+    </div>
+
+
+
+
+  </form>
+
+  <div class="grid-container pb-2 pt-4">
+    <button type="button" class="btn btn-danger" style="width: 100%;" (click)="goBack()">back to menu</button>
+    <button type="button" class="btn btn-success" style="width: 100%;" (click)="goForward()">next</button>
+  </div>
+
+
+</div>
+
+</div>
+
+

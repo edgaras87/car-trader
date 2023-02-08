@@ -1,0 +1,125 @@
+.row-flex {
+  display: grid;
+}
+
+.row-pic {
+  width: 80px;
+  height: 80px;
+  background-color: red;
+}
+
+.row-description {
+  flex-grow: 1;
+  height: 80px;
+}
+
+.vechicle-data-icon {
+  content: url("../../../../assets/car.svg");
+  background-color: rgb(225, 229, 254);
+  width: 56px;
+  height: 56px;
+}
+
+.equipment-icon {
+  content: url("../../../../assets/tyre.svg");
+  background-color: rgb(225, 229, 254);
+  width: 56px;
+  height: 56px;
+}
+
+.details-icon {
+  width: 56px;
+  height: 56px;
+  content: url("../../../../assets/details.svg");
+  background-color: rgb(225, 229, 254);
+}
+
+.contact-icon {
+  width: 56px;
+  height: 56px;
+  content: url("../../../../assets/person.svg");
+  background-color: rgb(225, 229, 254);
+}
+
+.form-sections-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accordion-button {
+  --bs-accordion-btn-focus-border-color: none;
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-body-padding-x: none;
+  --bs-accordion-body-padding-y: none;
+  --bs-accordion-active-color: none;
+  --bs-accordion-active-bg: none;
+}
+
+.line {
+  border-bottom: 1px solid #ccc;
+  display: block;
+}
+
+.v-line {
+  display: block;
+  margin: 0 auto;
+  border-left: 2px solid #066578;
+  height: 100%;
+  width: 1px;
+}
+
+.wizzard-step-item {
+  display: flex;
+}
+
+.wizzard-step-line {
+  width: 56px;
+}
+
+.wizzard-step-name {
+  flex-grow: 1;
+  padding-bottom: 18px;
+  padding-top: 18px;
+  padding-left: 16px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.wizzard-step-button {
+  display: flex;
+  width: 100px;
+  justify-content: end;
+  align-content: center;
+  padding-bottom: 18px;
+  padding-top: 18px;
+  border-bottom: 1px solid #d9d9d9;
+  font-size: 15px;
+  color: rgb(224, 75, 0);
+  text-decoration: underline;
+}
+
+.wizzard-step-item:last-child .wizzard-step-name {
+  border-bottom: none;
+}
+
+.wizzard-step-item:last-child .wizzard-step-button {
+  border-bottom: none;
+}
+
+.section-text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.complete-button {
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #f60;
+  border: 1px solid #e04b00;
+  color: #fff;
+  font-weight: 600;
+}/*# sourceMappingURL=menu.component.css.map */
