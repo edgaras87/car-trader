@@ -58,7 +58,7 @@ public class BackendApplication {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:80", "http://localhost", "http://127.0.0.1","http://127.0.0.1:80"));
+		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:80", "http://localhost", "http://127.0.0.1","http://127.0.0.1:80"));
 		
 	
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
