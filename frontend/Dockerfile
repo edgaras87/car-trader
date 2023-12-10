@@ -9,9 +9,6 @@ COPY package*.json ./
 
 # Install app dependencies
 RUN npm install
-#RUN npm install -g npm
-#RUN npm i npm@6.14.18
-#RUN npm run build --configuration env_name
 
 
 # Copy the application files to the container
@@ -28,6 +25,5 @@ CMD ["npm", "start"]
 # ====================
 FROM nginx
 COPY --from=build /usr/src/app/dist/car-trader-frontend /usr/share/nginx/html
-# Copy the default nginx.conf provided by tiangolo/node-frontend
-#COPY --from=build /nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 

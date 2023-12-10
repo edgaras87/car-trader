@@ -13,14 +13,14 @@ spring:
     import: env.yml
   data:
     mongodb:
-<<<<<<< HEAD
-      uri: mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@portfolio.g8ztuqs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority
-      auto-index-creation: true
+
+      #uri: mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@portfolio.g8ztuqs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority
+      #auto-index-creation: true
 
       #authentication-database: admin
       #username: rootuser
       #password: rootpass
-=======
+
 
       # ==== mongodb atlas =====
       #uri: mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@portfolio.g8ztuqs.mongodb.net/${DB_NAME}?retryWrites=true&w=majority
@@ -32,21 +32,19 @@ spring:
       #authentication-database: admin
       #username: root
       #password: example
->>>>>>> update
+
       #database: car-trader
       #port: 27017
       #host: localhost
       # for unique emails
       # for indexing location to calc distance
       #auto-index-creation: true
-<<<<<<< HEAD
-=======
 
       # ==== mongodb docker-compose
       #uri: mongodb://mongodb/car-trader?auto-index-creation=true
       uri: mongodb://root:example@mongodb/car-trader?authSource=admin&auto-index-creation=true
 
->>>>>>> update
+
   #mvc:
   #  pathmatch:
   #    matching-strategy: ANT_PATH_MATCHER # http://localhost:8080/swagger-ui/

@@ -1,3 +1,4 @@
+#env.yml
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -215,6 +216,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+
 
 ### Some additional ignores (sort later)
 *.DS_Store

@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http"
 import { inject } from "@angular/core"
+import { environment } from "src/environments/environment";
 
 
 /**
@@ -7,8 +8,7 @@ import { inject } from "@angular/core"
  */
 export class RestService {
 
-  private base: string = "http://localhost:5000/api";
-  //private base: string = "http://car-trader-api.eu-central-1.elasticbeanstalk.com/api";
+  private base: string = environment.apiUrl;
 
   resource: string = '/'
   protected http: HttpClient = inject(HttpClient)

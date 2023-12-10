@@ -21,24 +21,34 @@ services:
 
 
   spring-app:
-    image: edgaras87/car-trader:backend
-    #image: car-trader-backend:latest
-
-    #container_name: my-spring-app-container
+    image: edgaras87/car-trader-backend
+    #container_name: my-spring-app-container    
     ports:
       - "5000:5000"
+#    healthcheck:
+#      test: ["CMD", "curl", "-f", "http://localhost:5000/actuator/health"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+
     depends_on:
       - mongodb
 #    environment:
 #      SPRING_DATA_MONGODB_URI: mongodb://root:example@mongodb:27017/car-trader
 #      SPRING_DATA_MONGODB_DATABASE: car-trader
-#
+
+
 
   angular-app:
-    image: edgaras87/car-trader:frontend
-    #image: car-trader-frontend:latest
+    image: edgaras87/car-trader-frontend
     ports:
-      - "8080:80"
+      - "80:80"
+    depends_on:
+      - spring-app
+#        condition: service_healthy
+
+
+
 
 
 

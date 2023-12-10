@@ -58,14 +58,9 @@ public class BackendApplication {
 		UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration corsConfiguration = new CorsConfiguration();
 		corsConfiguration.setAllowCredentials(true);
-		//corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000", "http://localhost:4200"));
-<<<<<<< HEAD
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://car-trader-ui.s3-website.eu-central-1.amazonaws.com", "http://localhost:4200"));
-=======
-		//corsConfiguration.setAllowedOrigins(Arrays.asList("http://car-trader-ui.s3-website.eu-central-1.amazonaws.com", "http://localhost:4200"));
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:80", "http://localhost:8080"));
->>>>>>> update
-
+		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:80", "http://localhost", "http://127.0.0.1","http://127.0.0.1:80"));
+		
+	
 		corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
 				"Accept", "Jwt-Token", "Authorization", "Origin, Accept", "X-Requested-With",
 				"Access-Control-Request-Method", "Access-Control-Request-Headers"));
