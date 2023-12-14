@@ -27,3 +27,7 @@ FROM nginx
 COPY --from=build /usr/src/app/dist/car-trader-frontend /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Create the target directory
+RUN mkdir -p /etc/nginx/ssl
+# Copy SSL files into the target directory
+COPY ./ssl /etc/nginx/ssl

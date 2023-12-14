@@ -25,8 +25,8 @@ docker images
 docker push "$tag_front"
 docker push "$tag_back"
 
-docker rmi "$tag_front"
-docker rmi "$tag_back"
+#docker rmi "$tag_front"
+#docker rmi "$tag_back"
 
 
 docker images
